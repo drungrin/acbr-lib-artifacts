@@ -100,3 +100,9 @@ jobs:
           files: ${{ env.ZIP_NAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 7. Keepalive
+      - name: Manter Workflow Ativo
+        uses: gautamkrishnar/keepalive-workflow@v1
+        with:
+          use_github_bot: true
