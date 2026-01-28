@@ -1,0 +1,102 @@
+name: Daily Sync and Build ACBr
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # Roda todo dia às 06:00 UTC
+  workflow_dispatch: # Permite rodar manualmente
+
+permissions:
+  contents: write
+
+jobs:
+  sync-build-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Preparação do Ambiente
+      - name: Criar diretório de trabalho
+        run: mkdir -p build_env
+
+      # 2. Checkout do SEU Fork dentro da pasta que o script espera (ACBr)
+      - name: Checkout ACBr (Fork)
+        uses: actions/checkout@v4
+        with:
+          path: build_env/ACBr # Checkou para dentro de build_env/ACBr
+          fetch-depth: 0 
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 3. Sincronização com o Repositório Original
+      - name: Sync com Upstream
+        id: sync
+        working-directory: build_env/ACBr # Importante: comandos git rodam aqui dentro
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # URL do Projeto ACBr Original
+          UPSTREAM_URL="https://github.com/ProjetoACBr/ACBr.git"
+          BRANCH_NAME="master" # O ACBr costuma usar master, verifique se mudaram para main
+          
+          echo "Adicionando upstream..."
+          git remote add upstream $UPSTREAM_URL
+          git fetch upstream
+          
+          BEFORE_MERGE=$(git rev-parse HEAD)
+          
+          echo "Mesclando upstream/$BRANCH_NAME..."
+          git merge upstream/$BRANCH_NAME --no-edit
+          git push origin $BRANCH_NAME
+          
+          AFTER_MERGE=$(git rev-parse HEAD)
+          
+          if [ "$BEFORE_MERGE" != "$AFTER_MERGE" ]; then
+            echo "changes_detected=true" >> $GITHUB_OUTPUT
+            echo "Novas alterações detectadas."
+          else
+            echo "changes_detected=false" >> $GITHUB_OUTPUT
+            echo "Nenhuma alteração nova."
+          fi
+
+      # 4. Execução do Script de Build (apenas se houve mudanças ou disparo manual)
+      - name: Executar Script de Build
+        if: steps.sync.outputs.changes_detected == 'true' || github.event_name == 'workflow_dispatch'
+        run: |
+          # Define o caminho absoluto para o SOURCES_DIR
+          WORK_DIR=$(pwd)/build_env
+          
+          # Dá permissão de execução ao script (que está dentro do repo baixado)
+          chmod +x build_env/ACBr/build-acbr-lib.sh
+          
+          echo "Iniciando build..."
+          # Executa o script apontando o sources para o diretório pai
+          # O script vai ver que a pasta 'ACBr' já existe e pulará o clone dela
+          ./build_env/ACBr/build-acbr-lib.sh --sources "$WORK_DIR"
+
+      # 5. Compactar Artefatos
+      - name: Zipar Bibliotecas
+        if: steps.sync.outputs.changes_detected == 'true' || github.event_name == 'workflow_dispatch'
+        run: |
+          # Define a data para o nome do arquivo
+          DATA_HOJE=$(date +'%Y-%m-%d')
+          ZIP_NAME="acbr-libs-${DATA_HOJE}.zip"
+          
+          echo "Compactando output..."
+          cd build_env/Output
+          zip -r ../../$ZIP_NAME ./*
+          
+          # Salva o nome do zip para o próximo passo
+          echo "ZIP_NAME=$ZIP_NAME" >> $GITHUB_ENV
+
+      # 6. Criar Release
+      - name: Criar Release no GitHub
+        if: steps.sync.outputs.changes_detected == 'true' || github.event_name == 'workflow_dispatch'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: build-${{ env.ZIP_NAME }}
+          name: Build Diário ${{ env.ZIP_NAME }}
+          body: |
+            Build automático sincronizado com o upstream.
+            Data: ${{ env.ZIP_NAME }}
+          files: ${{ env.ZIP_NAME }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
