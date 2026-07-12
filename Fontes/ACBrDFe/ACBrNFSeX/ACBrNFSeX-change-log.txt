@@ -42,6 +42,21 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+10/07/2026
+-- ACBrNFSeXProviderManager/DSF.GravarXml/DSF.LerXml/DSF.Provider --
+[*] ACBR-9622/9621 - Alterações visando consumir a nova API Rest do provedor DSF.
+   Por: Italo Giurizzato Junior
+-- ACBrNFSeXServicos --
+[*] ACBR-9622/9621 - O Provedor DSF implementou uma API Rest para recepcionar o XML 
+    segundo o layout do padrão Nacional e vai usar essa API para as cidades de 
+    João Pessoa/PB e Campinas/SP é bem provável que vai usar nas demais cidades que 
+    usam o provedor DSF e ISSDSF.
+   Por: Italo Giurizzato Junior
+-- ACBrNFSeXDANFSeRLPadraoNacional --
+[*] Incluído o numerador de páginas e agora o Canhoto só é impresso se a propriedade
+    de configuração: ImprimeCanhoto receber o valor True.
+   Por: Italo Giurizzato Junior
+
 09/07/2026
 -- ACBrNFSeXServicos --
 [*] A cidade de Registro/SP mudou de provedor, agora é o Giss na versão 2.04
