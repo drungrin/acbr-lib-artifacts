@@ -42,6 +42,23 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+14/07/2026
+-- ACBrNFSeXServicos --
+[*] ACBR-9522 - Municipio de Suzano/SP mudou de Ginfes para Giss
+	Por: Larissa Santos
+	Veja: https://www.projetoacbr.com.br/forum/topic/92952-provedor-de-suzano-sp-mudan%C3%A7a-para-giss/
+-- Tecnos.GravarXml/Tecnos.LerXml/Tecnos.Provider --
+[+] ACBR-9311 - Implementado o ConsultarNFSeServicosTomadosIntermediados.
+   Por: Italo Giurizzato Junior
+-- ACBrNFSeXGravarXml --
+[*] ACBR-9626 - As tags pRedAliqUF, pRedAliqMun pRedAliqCBS, estavam como obrigatórias
+    sendo que são opcionais.
+   Por: Italo Giurizzato Junior
+-- ACBrNFSeXConversao --
+[*] ACBR-9486 - Alteração visando utilizar as funções StrToEnumerado e EnumeradoToStr
+    definidas na unit ACBrDFe.Conversao
+   Por: Italo Giurizzato Junior
+
 13/07/2026
 -- ACBrNFSeXServicos --
 [*] ACBR-9532 - Incluída a cidade Varjota/CE, o provedor é SSInformatica.
