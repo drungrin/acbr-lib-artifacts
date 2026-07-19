@@ -19,10 +19,13 @@
     </General>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
-      <AutoIncrementBuild Value="True"/>
+      <AutoIncrementBuild Value="False"/>
       <BuildNr Value="1"/>
       <Language Value="0416"/>
       <StringTable Comments="Projeto ACBr" CompanyName="Projeto ACBr" FileDescription="ACBrCIOT - Biblioteca para uso do CIOT" InternalName="ACBrLibCIOT" LegalCopyright="Projeto ACBr" LegalTrademarks="ProjetoACBr" ProductName="CIOT" ProductVersion="0.0.0.0"/>
+      <MajorVersionNr Value="1"/>
+      <MinorVersionNr Value="0"/>
+      <RevisionNr Value="0"/>
     </VersionInfo>
     <MacroValues Count="2">
       <Macro1 Name="ACBrDir" Value="$Env(ACBR_HOME)"/>
@@ -39,7 +42,7 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="bin\Demo\Linux\CONSOLE-MT\acbrCIOT64"/>
+            <Filename Value="bin\Demo\Linux\CONSOLE-MT\acbrciot64"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);..\Comum;$(ACBrDir)\Fontes\ACBrComum"/>
@@ -84,7 +87,7 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="bin\Demo\Linux\CONSOLE-MT\acbrCIOT32"/>
+            <Filename Value="bin\Demo\Linux\CONSOLE-MT\acbrciot32"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);..\Comum;$(ACBrDir)\Fontes\ACBrComum"/>
@@ -129,7 +132,7 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="bin\Android\jniLibs\armeabi-v7a\libACBrLibCIOT"/>
+            <Filename Value="bin\Demo\Android\jniLibs\armeabi-v7a\libACBrLibCIOT"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);..\Comum;$(ACBrDir)\Fontes\ACBrComum"/>
@@ -155,15 +158,7 @@
             </Options>
           </Linking>
           <Other>
-            <CustomOptions Value="-dDemo
--dANDROID
--dNOGUI
--dNOREPORT
--dMT
--Xd
--CfVFPv3
--CpARMV7A
--XParm-linux-androideabi-"/>
+            <CustomOptions Value="-dDemo  -dANDROID  -dNOGUI  -dNOREPORT  -dMT  -Xd  -CfVFPv3  -CpARMV7A  -XParm-linux-androideabi-"/>
           </Other>
         </CompilerOptions>
       </Item4>
@@ -176,7 +171,7 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="bin\Android\jniLibs\arm64-v8a\libACBrLibCIOT"/>
+            <Filename Value="bin\Demo\Android\jniLibs\arm64-v8a\libACBrLibCIOT"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);..\Comum;$(ACBrDir)\Fontes\ACBrComum"/>
@@ -202,13 +197,7 @@
             </Options>
           </Linking>
           <Other>
-            <CustomOptions Value="-dDemo
--dANDROID
--dNOGUI
--dNOREPORT
--dMT
--Xd
--XPaarch64-linux-android-"/>
+            <CustomOptions Value="-dDemo  -dANDROID  -dNOGUI  -dNOREPORT  -dMT  -Xd  -XPaarch64-linux-android-"/>
           </Other>
         </CompilerOptions>
       </Item5>
