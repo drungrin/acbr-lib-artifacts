@@ -51,6 +51,47 @@ fi
 
 cd ACBr
 
+# -----------------------------------------------------------------------------
+# Source Normalization: {$R} resource case-sensitivity
+# -----------------------------------------------------------------------------
+# Upstream (Windows/Delphi) occasionally references a resource file with a case
+# or path-separator that does not match the on-disk name, e.g.
+#   {$R ..\ACBrNFSeXLogo.RES}   while the committed file is  ACBrNFSeXLogo.res
+# Delphi/Windows is case-insensitive so it builds there, but our Lazarus/FPC
+# build runs on a case-sensitive Linux filesystem and aborts with:
+#   Error: (9031) Can't open resource file "...ACBrNFSeXLogo.RES"
+# We scan the sources for {$R <file>} directives and, whenever the referenced
+# name does not exist but a case-insensitive match does, create a symlink under
+# the exact referenced name so the compiler resolves it. This is self-healing
+# for future occurrences and survives the daily upstream merge (this script is
+# ours, not synced from upstream).
+echo "--> [INIT] Normalizando referencias de recursos ({\$R}) para filesystem case-sensitive..."
+normalize_resource_refs() {
+    # ACBr sources are ISO-8859/CRLF, which a UTF-8 locale flags as "binary";
+    # force byte matching (LC_ALL=C) and treat as text (grep -a) so scanning works.
+    # Files that carry a {$R <file>} directive (excluding wildcard forms like *.dfm/*.lfm)
+    { LC_ALL=C grep -ralE '\{\$R[[:space:]]+[^*}]+\}' \
+        --include='*.pas' --include='*.lpr' --include='*.dpr' --include='*.inc' . 2>/dev/null || true; } | \
+    while IFS= read -r src; do
+        srcdir=$(dirname "$src")
+        LC_ALL=C grep -aoE '\{\$R[[:space:]]+[^*}]+\}' "$src" 2>/dev/null | \
+            sed -E 's/^\{\$R[[:space:]]+//; s/[[:space:]]*\}[[:cntrl:]]*$//' | while IFS= read -r ref; do
+            ref=${ref//\\//}                       # Windows path separators -> POSIX
+            target="$srcdir/$ref"
+            [ -e "$target" ] && continue           # already resolves on disk
+            tdir=$(dirname "$target")
+            tbase=$(basename "$target")
+            [ -d "$tdir" ] || continue
+            actual=$(find "$tdir" -maxdepth 1 -iname "$tbase" -print -quit 2>/dev/null)
+            [ -n "$actual" ] || continue           # no case-insensitive match either
+            ln -sf "$(basename "$actual")" "$target"
+            echo "    [FIX] $src: criado '$tbase' -> '$(basename "$actual")'"
+        done
+    done
+    return 0
+}
+normalize_resource_refs
+
 CONST_IMAGE="drungrin/lazarus-builder:1.0.0"
 
 # Inventory definition.
