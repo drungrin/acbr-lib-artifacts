@@ -42,6 +42,30 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+20/07/2026
+-- ACBrNFseXServicos --
+[*] ACBR-9655 - O município de Holambra/SP trocou de provedor agora é o Giap.
+   Por: regina-jrs
+-- ACBrNFSeXDANFSeRLPadraoNacional --
+[*] Ao imprimir o pCBS estava pegando o pIBSUF, foi corrigido.
+   Por: Ao3 Tech
+-- ABase.Provider --
+[*] ACBR-9654 - Correção na geração do Headers.
+   Por: cr@cr.inf.br
+   Veja: https://www.projetoacbr.com.br/forum/topic/93331-acbr-9564-nfsex-rolante-rs-erro-404-ao-transmitir-nfs-e/#comment-611830
+-- ACBrNFSeX --
+[*] Alterado a assinatura da procedure SetProvedor, agora tem um terceiro parâmetro
+    onde podemos passar o valor True ou False para setar se o provedor tem uma 
+    APIPropria ou não.
+   Por: Italo Giurizzato Junior
+-- ACBrNFseXServicos --
+[*] ACBR-9646 - O município de Lebon Regis/SC aderiu ao Padrão Nacional
+   Por: Metasis Sistemas
+   Veja: https://www.projetoacbr.com.br/forum/topic/93536-acbr-9646-altera%C3%A7%C3%A3o-para-provedor-nacional-lebon-regis-sc/
+[*] ACBR-9609 - O município de Arroio Trinta/SC aderiu ao Padrão Nacional
+   Por: Metasis Sistemas
+   Veja: https://www.projetoacbr.com.br/forum/topic/93377-acbr-9609-altera%C3%A7%C3%A3o-para-provedor-nacional-arroio-trinta-sc/ 
+
 17/07/2026
 -- Diversos --
 [+] Implementado a leitura do Logo da NFS-e Padrão Nacional de um resource.

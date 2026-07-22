@@ -368,7 +368,7 @@ uses
 {$R *.lfm}
 {$ENDIF}
 
-{$R ..\ACBrNFSeXLogo.RES}
+{$R ACBrNFSeXLogo.res}
 
 var
   FQuebradeLinha: String;
@@ -988,7 +988,7 @@ begin
   aValor := fpNFSe.infNFSe.IBSCBS.valores.fed.pCBS;
 
   if aValor > 0 then
-    rllAliquotaCBS.Caption := FormatFloatBr(fpNFSe.infNFSe.IBSCBS.valores.uf.pIBSUF) + '%'
+    rllAliquotaCBS.Caption := FormatFloatBr(aValor) + '%'
   else
     rllAliquotaCBS.Caption := '-';
 
