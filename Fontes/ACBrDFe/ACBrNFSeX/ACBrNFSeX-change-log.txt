@@ -42,6 +42,34 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+24/07/2026
+-- PadraoNacional.GravarXml --
+[*] ACBR-9637 - Alteração visando gerar a tag tpRetPisCofins mesmo que as tags de
+    tributação federal não sejam geradas.
+   Por: RP INFO Sistemas
+-- ACBrNFSeXServicos --
+[*] Atualização da URL da cidade de Belford Roxo/RJ, o provedor continua o mesmo.
+   Por: Italo Giurizzato Junior
+-- Agili.Provider --
+[*] ACBR-9555 - Alteração visando não realizar a conversão para UTF8 duas vezes.
+   Por: Lucas Batista - Alfameta
+-- ACBrNFSeXServicos --
+[*] Atualiza a URL da cidade de Piraí/RJ, o provedor continua o Tiplan na versão 2.03 do leiaute ABRASF
+   Por: Ian Miranda
+[-] Adiciona parâmetro para Grajau/MA não considerar APIPropria do SpeedGov
+   Por: Diego Folieni
+-- Betha.GravarXml --
+[*] ACBR-9645 - Alteração visando não gerar a tag indFinal pois a mesma foi removida,
+    no Schema ainda consta como opcional.
+   Por: Italo Giurizzato Junior
+-- Saatri.GravarXml --
+[*] ACBR-9629 - Alterações visando gerar os novos campos referente a RTC.
+   Por: Italo Giurizzato Junior
+-- ACBrNFSeXConversao --
+[-] ACBR-9593 - Incluído o enumerario trVazio ao tipo TtpRetPisCofins uma vez que a 
+    a tag é opcional.
+   Por: Valter Patrick/Italo Giurizzato Junior
+
 23/07/2026
 -- SpeedGov.LerXml --
 [-] ACBR-9605 - A leitura dos campos CodMunicipio e CodPais estava errado, esses campos são
