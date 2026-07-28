@@ -53,7 +53,7 @@ const
   cItauURLProducao = 'https://secure.api.itau';
   cItauURLPixAutomaticoProd = 'https://pixautomatico-recebimentos.api.itau.com';
   cItauURLPixAutomaticoHom = 'https://pixautomatico-recebimentos.api.hom.itau.com';
-  cItauURLPixAutomaticoCobR = 'https://recebimentos-pix.api.itau.com/qrcode-pix-automatico/v1';
+  cItauURLPixAutomaticoCobR = 'https://pixautomatico-recebimentos.api.itau.com';
   cItauPathQRCodePIXAutomatico = '/qrcode-pix-automatico/v1';
   cItauPathPIXAutomatico = '/pixautomatico/v1';
   cItauPathAPIPix = '/pix_recebimentos/v2';
@@ -89,7 +89,7 @@ type
     procedure ConfigurarHeaders(const Method, AURL: String); override;
 
     function ObterURL(const aMethod, aEndPoint: String): String;
-    function ObterURLAmbiente(const Ambiente: TACBrPixCDAmbiente): String; override;
+    function ObterURLAmbientePadrao(const Ambiente: TACBrPixCDAmbiente): String; override;
     function ObterURLAmbienteRec(const Ambiente: TACBrPixCDAmbiente): String;
   public
     constructor Create(AOwner: TComponent); override;
@@ -308,7 +308,7 @@ begin
     (ACBrPixCD.Ambiente = ambProducao) and (Pos(cItauPathCertificadoSolicitacao, AURL) <= 0);
 end;
 
-function TACBrPSPItau.ObterURLAmbiente(const Ambiente: TACBrPixCDAmbiente): String;
+function TACBrPSPItau.ObterURLAmbientePadrao(const Ambiente: TACBrPixCDAmbiente): String;
 begin
   if (Ambiente = ambProducao) then
     Result := cItauURLProducao + cItauPathAPIPix
@@ -377,7 +377,10 @@ begin
   end;
 
   if NaoEstaVazio(s) then
-    Http.Headers.Add('x-correlationID: ' + s);
+  begin
+    Http.Headers.Add('x-itau-correlationID: ' + s);
+    Http.Headers.Add('x-itau-apikey: ' + ClientID);
+  end;
 
   if (ACBrPixCD.Ambiente = ambTeste) and (fpToken <> '') then
     Http.Headers.Add('x-sandbox-token: ' + fpToken);
@@ -386,7 +389,7 @@ end;
 function TACBrPSPItau.ObterURL(const aMethod, aEndPoint: String): String;
 begin
   if (aEndPoint = cEndPointCobR) then
-    Result := cItauURLPixAutomaticoCobR + cItauPathQRCodePIXAutomatico
+    Result := cItauURLPixAutomaticoCobR + cItauPathPIXAutomatico
   else
   begin
     VerificarPIXCDAtribuido;
