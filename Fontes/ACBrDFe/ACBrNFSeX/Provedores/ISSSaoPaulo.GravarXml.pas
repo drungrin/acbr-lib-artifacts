@@ -335,7 +335,8 @@ begin
 
   if (NFSe.TipoTributacaoRPS <> ttTribnoMun) and
      (NFSe.TipoTributacaoRPS <> ttTribnoMunIsento) and
-     (NFSe.TipoTributacaoRPS <> ttTribnoMunImune) then
+     (NFSe.TipoTributacaoRPS <> ttTribnoMunImune) and
+     (NFSe.TipoTributacaoRPS <> ttTribnoMunSuspensa) then
     LNFSeNode.AppendChild(AddNode(tcStr, '#1', 'MunicipioPrestacao', 1, 7, 0,
                                              NFSe.Servico.CodigoMunicipio, ''));
 
@@ -376,7 +377,7 @@ begin
                                                                       '0', ''));
 
     LNFSeNode.AppendChild(AddNode(tcStr, '#1', 'PagamentoParceladoAntecipado', 1, 1, 0,
-                                                                      '', ''));
+                                                                      '0', ''));
   end;
 
   LNFSeNode.AppendChild(AddNode(tcStr, '#1', 'NCM', 1, 15, 0,
