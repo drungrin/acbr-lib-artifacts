@@ -42,6 +42,46 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+06/08/2026
+-- IPM.Provider --
+[*] ACBR-9667 - Implementa a consulta de NFSe por período para o IPM.
+   Por: Diego Folieni
+   Veja: https://www.projetoacbr.com.br/forum/topic/93572-acbr-9667-erro-ao-recuperar-dados-da-nfse/page/2/
+-- ACBrNFSeXServicos --
+[*] ACBR-9720 - O município de Luziânia/GO aderiu ao Padrão Nacional
+	Por: Andryel Blanco
+	Veja: https://www.projetoacbr.com.br/forum/topic/94043-acbr-9720-erro-502-bad-gateway-ao-tentar-emitir-uma-nfse-no-munic%C3%ADpio-de-luzi%C3%A2nia/
+[*] ACBR-9719 - O município de Andirá/PR aderiu ao Padrão Nacional
+	Por: armando.boza
+	Veja: https://www.projetoacbr.com.br/forum/topic/94038-acbr-9719-nfse-andir%C3%A1-pr-mudou-de-elotech-para-padr%C3%A3o-nacional/
+[*] ACBR-9713 - O município de Sales Oliveira/SP aderiu ao Padrão Nacional
+	Por: Larissa Santos
+[*] ACBR-9707 - O município de Pinhais/PR aderiu ao Padrão Nacional
+	Por: Programador Infocase
+	Veja: https://discord.com/channels/798697718800318484/800042186783588364/1534257347705311324
+[*] ACBR-9703 - Alteração de layout e URLs do Provedor EL para o município de Barreiras/BA-3204559/#comment-605446
+	Por: dreamsoft_PR
+	Veja: https://www.projetoacbr.com.br/forum/topic/93929-api-acbr-nfse/
+[*] ACBR-9684 - Provedor Sintese alterou a URL de Homologação
+	Por: mlgoncalves
+	Veja: https://www.projetoacbr.com.br/forum/topic/93750-provedor-sintese-da-cidade-de-s%C3%A3o-br%C3%A1s-do-sua%C3%A7u%C3%AD-nova-url-de-homologa%C3%A7%C3%A3o/
+-- ACBrNFSeXLerXml --
+[-] ACBR-9681 - Correção na leitura do campo: DataOptanteSimplesNacional 
+   Por: Italo Giurizzato Junior
+-- DSF.Provider --
+[*] Ajustes por conta da correção das URLs de homologação.
+   Por: Italo Giurizzato Junior
+-- ACBrNFSeXServicos --
+[*] Correção nas URLs de Homologação do novo WebService do provedor DSF.
+   Por: Italo Giurizzato Junior
+-- Giap.GravarXml --
+[-] ACBR-9716 - Altera a ordem da geração das tags nbs e código visando espelhar o exemplo do XML
+   Por: Diego Folieni
+   Veja: https://www.projetoacbr.com.br/forum/topic/93902-acbr-9716erro-sql-emiss%C3%A3o-piracicaba-sp/
+-- Centi.GravarXml --
+[*] ACBR-9717 - Alteração visando gerar os campos: CodigoINDOP e CodigoClassTrib.
+    Por: Diego Reckziegel
+
 05/08/2026
 -- PadraoNacional.GravarXML/ACBrNFSeXGravarXml --
 [-] Comenta trecho de rotina que ainda está em construção e remove comentário que impedia a consolidação da Discriminacao.
