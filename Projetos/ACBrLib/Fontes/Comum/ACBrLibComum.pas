@@ -1126,10 +1126,14 @@ end;
 function ObterInformacoesDeAmbienteGrafico(): string;
 begin
   result:=
-  {$IFDEF NOREPORT}
+  {$IFDEF LCLNoGUI}
   'Console'
   {$Else}
-  'GUI'
+   {$IFDEF LCLFpGUI}
+   'Console'
+   {$else}
+   'GUI'
+   {$ENDIF}
   {$endif}
   ;
 end;
