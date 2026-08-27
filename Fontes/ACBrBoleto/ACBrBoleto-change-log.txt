@@ -48,6 +48,24 @@ Símbolo : Significado
 [+]     : Novo recurso
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
+26/08/2026
+-- ACBrBoletoRet_Itau_API.pas --
+[*] Adicionado para pegar o nome do pagador.
+	https://www.projetoacbr.com.br/forum/topic/94431-altera%C3%A7%C3%A3o-na-unit-acbrboletoret_itau_api-foi-adicionado-o-campo-pagador-no-retorno-do-itau-por-lista/#comment-617965
+	Por: Jhonlenon Ribeiro
+
+25/08/2026
+-- ACBrBoletoW_Itau_API --
+[*] ACBR-9241: https://www.projetoacbr.com.br/forum/topic/92306-aten%C3%A7%C3%A3o-descontinua%C3%A7%C3%A3o-do-endpoint-atual-da-api-bolecode-bolecode-pix-do-ita%C3%BA-nova-api-de-boleto-hibrido-dispon%C3%ADvel-para-testes/
+	Por: Daniel de Morais InfoCotidiano
+
+25/08/2026
+-- ACBrBoletoWS.pas, ACBrBoletoRet_C6_V2.pas, ACBrBoletoW_C6_V2.pas --
+[+] Implementado C6 V2 Hibrido
+   ACBr-ACBR-8924: https://www.projetoacbr.com.br/forum/topic/92854-acbr-8924-implementa%C3%A7%C3%A3o-para-api-v2-do-c6-bank/?&_rid=1706#findComment-610989
+				   https://www.projetoacbr.com.br/forum/topic/93272-acbr-8924-implementa%C3%A7%C3%A3o-do-bolepix-c6bank-boleto-hibrido-pix/?_rid=1706		
+   Por: marcosvillatore, Jhonlenon Ribeiro, Valter Patrick, Daniel de Morais InfoCotidano
+
 20/08/2026
 -- ACBrBoletoW_Itau_API --
 [+] Ajustado URL atualização de segurança: https://www.projetoacbr.com.br/forum/topic/94331-aten%C3%A7%C3%A3o-atualiza%C3%A7%C3%A3o-dos-endpoints-e-da-cadeia-de-certificados-das-apis-do-ita%C3%BA-15092026/

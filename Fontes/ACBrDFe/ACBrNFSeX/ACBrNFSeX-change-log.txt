@@ -42,6 +42,42 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+26/08/2026
+-- ISSNet.Provider --
+[*] ACBR-9763/ACBR-9770 - Troca do ParseText pela função DecodeHTMLEntities.
+   Por: Italo Giurizzato Junior
+-- ACBrNFSeXLerXml --
+[*] ACBR-9763/ACBR-9770 - Remoção do ParseText da função NormatizarXml.
+    Se for necessário alguma ação a referida função vai ser sobrescrita na unit de leitura
+    do XML do provedor.
+   Por: Italo Giurizzato Junior
+-- ISSSaoPaulo.GravarXml --
+[*] Removida geração do PagamentoParceladoAntecipado conforme o Alerta: 648-O campo PagamentoParceladoAntecipado nao sera mais utilizado e os valores enviados serao desconsiderados
+   Por: Renato Rubinho
+
+25/08/2026
+-- ACBrNFSeXServicos --
+[*] Adicionado parametro para cidade de Araras
+https://www.projetoacbr.com.br/forum/topic/94421-acbrnfsex-ararassp-3503307-sigissweb-%E2%80%94-incluir-paramsformataritemservicosemzeroesquerda/
+	Por: Alexandre de Paula e cezar.sakugawa
+
+25/08/2026
+-- ACBrNFSeXProviderABRASFv1/ACBrNFSeXProviderABRASFv2 --
+[*] Ajustes para o CNPJ Alfa.
+   Por: Italo Giurizzato Junior
+-- IPM.GravarXml --
+[*] Alteração visando gerar a tag cLocalidadeIncid para a versão 2.04
+   Por: Italo Giurizzato Junior
+-- ACBrNFSeX --
+[*] ACBR-9752 - Incluído o parâmetro ACodigoMunicipio no ConsultarParametros.
+   Por: Armando Boza
+-- ACBrNFSeXServicos --
+[*] ACBR-9763 - Incluído o Link para gerar o QR-Code - Provedor ISSNet (Padrão Nacional)
+   Por: Intelelecto Programação
+-- ISSNet.Provider --
+[*] ACBR-9763 - Ajustes na leitura do retorno.
+   Por: Intelelecto Programação
+
 24/08/2026
 -- ACBrNFSeXConversao/ACBrNFSeXProviderManager --
 -- NFOnline.GravarXml/NFOnline.LerXml/NFOnline.Provider --
