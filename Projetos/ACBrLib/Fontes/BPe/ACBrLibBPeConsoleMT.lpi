@@ -11,27 +11,25 @@
         <CompatibilityMode Value="True"/>
       </Flags>
       <SessionStorage Value="InProjectDir"/>
-      <Title Value="ACBrLibNFe"/>
+      <Title Value="ACBrLibBPe"/>
       <ResourceType Value="res"/>
-      <XPManifest>
-        <DpiAware Value="True/PM"/>
-      </XPManifest>
+      <UseXPManifest Value="True"/>
     </General>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MajorVersionNr Value="1"/>
-      <MinorVersionNr Value="5"/>
-      <BuildNr Value="479"/>
+      <MinorVersionNr Value="1"/>
+      <RevisionNr Value="1"/>
+      <BuildNr Value="1"/>
       <Language Value="0416"/>
-      <StringTable CompanyName="Projeto ACBr" FileDescription="ACBrNFe - BIblioteca para emissão e impressão de nota fiscal eletrônica" InternalName="ACBrLibNFE" LegalCopyright="Projeto ACBr" LegalTrademarks="Projeto ACBr" ProductName="ACBrNFe " ProductVersion="0.4.6.0"/>
-      <AutoIncrementBuild Value="False"/>
-      <RevisionNr Value="0"/>
+      <Attributes pvaPreRelease="True"/>
+      <StringTable Comments="Projeto ACBr" CompanyName="ACBrBPe - Biblioteca para emissão e impressão do Bilhete de Passagem Eletrônico" FileDescription="ACBrLibBPe" InternalName="ACBrLibBPe" LegalCopyright="Projeto ACBr" LegalTrademarks="Projeto ACBr" ProductName="BPe" ProductVersion="0.0.0.0"/>
     </VersionInfo>
     <MacroValues Count="2">
       <Macro1 Name="ACBrDir" Value="$Env(ACBR_HOME)"/>
       <Macro2 Name="LCLWidgetType" Value="nogui"/>
     </MacroValues>
-    <BuildModes Count="7">
+    <BuildModes Count="6">
       <Item1 Name="i386-CDECL-DEBUG" Default="True"/>
       <Item2 Name="Linux-x86_64-MT">
         <MacroValues Count="2">
@@ -42,11 +40,11 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="bin\Linux\CONSOLE-MT\libacbrnfe64"/>
+            <Filename Value="bin\Linux\CONSOLE-MT\libacbrbpe64"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);..\Comum;$(ACBrDir)\Fontes\ACBrComum"/>
-            <OtherUnitFiles Value="..\Comum;$(ACBrDir)\Fontes\ACBrComum;$(ACBrDir)\Fontes\ACBrDFe;$(ACBrDir)\Fontes\ACBrDFe\Comum;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\EscPos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base\Servicos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\PCNNFe;$(ACBrDir)\Fontes\PCNComum;$(ACBrDir)\Fontes\ACBrDiversos;$(ACBrDir)\Fontes\ACBrSerial;$(ACBrDir)\Fontes\ACBrOpenSSL;$(ACBrDir)\Fontes\ACBrTCP;$(ACBrDir)\Fontes\ACBrIntegrador;$(ACBrDir)\Fontes\ACBrIntegrador\pcnVFPe;$(ACBrDir)\Fontes\Terceiros\synalist;$(ACBrDir)\Fontes\Terceiros\FPDF-Pascal;$(ACBrDir)\Fontes\Terceiros\GZIPUtils;$(ACBrDir)\Fontes\Terceiros\FastStringReplace;$(ACBrDir)\Fontes\Terceiros\CodeGear;$(ACBrDir)\Fontes\Terceiros\Ole;$(ACBrDir)\Fontes\Terceiros\DelphiZXingQRCode;$(ACBrDir)\Fontes\ACBrLibXML2"/>
+            <OtherUnitFiles Value="..\Comum;$(ACBrDir)\Fontes\ACBrComum;$(ACBrDir)\Fontes\ACBrDFe;$(ACBrDir)\Fontes\ACBrDFe\Comum;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\DABPe;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\Base\Servicos;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\Base;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\PCNBPe;$(ACBrDir)\Fontes\PCNComum;$(ACBrDir)\Fontes\ACBrDiversos;$(ACBrDir)\Fontes\ACBrSerial;$(ACBrDir)\Fontes\ACBrOpenSSL;$(ACBrDir)\Fontes\ACBrTCP;$(ACBrDir)\Fontes\ACBrIntegrador;$(ACBrDir)\Fontes\ACBrIntegrador\pcnVFPe;$(ACBrDir)\Fontes\Terceiros\synalist;$(ACBrDir)\Fontes\Terceiros\FPDF-Pascal;$(ACBrDir)\Fontes\Terceiros\GZIPUtils;$(ACBrDir)\Fontes\Terceiros\FastStringReplace;$(ACBrDir)\Fontes\Terceiros\CodeGear;$(ACBrDir)\Fontes\Terceiros\Ole;$(ACBrDir)\Fontes\Terceiros\DelphiZXingQRCode;$(ACBrDir)\Fontes\ACBrLibXML2"/>
             <UnitOutputDirectory Value="lib\CONSOLE-$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -81,11 +79,11 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="bin\Linux\CONSOLE-MT\libacbrnfe32"/>
+            <Filename Value="bin\Linux\CONSOLE-MT\libacbrbpe32"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);..\Comum;$(ACBrDir)\Fontes\ACBrComum"/>
-            <OtherUnitFiles Value="..\Comum;$(ACBrDir)\Fontes\ACBrComum;$(ACBrDir)\Fontes\ACBrDFe;$(ACBrDir)\Fontes\ACBrDFe\Comum;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\EscPos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base\Servicos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\PCNNFe;$(ACBrDir)\Fontes\PCNComum;$(ACBrDir)\Fontes\ACBrDiversos;$(ACBrDir)\Fontes\ACBrSerial;$(ACBrDir)\Fontes\ACBrOpenSSL;$(ACBrDir)\Fontes\ACBrTCP;$(ACBrDir)\Fontes\ACBrIntegrador;$(ACBrDir)\Fontes\ACBrIntegrador\pcnVFPe;$(ACBrDir)\Fontes\Terceiros\synalist;$(ACBrDir)\Fontes\Terceiros\FPDF-Pascal;$(ACBrDir)\Fontes\Terceiros\GZIPUtils;$(ACBrDir)\Fontes\Terceiros\FastStringReplace;$(ACBrDir)\Fontes\Terceiros\CodeGear;$(ACBrDir)\Fontes\Terceiros\Ole;$(ACBrDir)\Fontes\Terceiros\DelphiZXingQRCode;$(ACBrDir)\Fontes\ACBrLibXML2"/>
+            <OtherUnitFiles Value="..\Comum;$(ACBrDir)\Fontes\ACBrComum;$(ACBrDir)\Fontes\ACBrDFe;$(ACBrDir)\Fontes\ACBrDFe\Comum;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\DABPe;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\Base\Servicos;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\Base;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\PCNBPe;$(ACBrDir)\Fontes\PCNComum;$(ACBrDir)\Fontes\ACBrDiversos;$(ACBrDir)\Fontes\ACBrSerial;$(ACBrDir)\Fontes\ACBrOpenSSL;$(ACBrDir)\Fontes\ACBrTCP;$(ACBrDir)\Fontes\ACBrIntegrador;$(ACBrDir)\Fontes\ACBrIntegrador\pcnVFPe;$(ACBrDir)\Fontes\Terceiros\synalist;$(ACBrDir)\Fontes\Terceiros\FPDF-Pascal;$(ACBrDir)\Fontes\Terceiros\GZIPUtils;$(ACBrDir)\Fontes\Terceiros\FastStringReplace;$(ACBrDir)\Fontes\Terceiros\CodeGear;$(ACBrDir)\Fontes\Terceiros\Ole;$(ACBrDir)\Fontes\Terceiros\DelphiZXingQRCode;$(ACBrDir)\Fontes\ACBrLibXML2"/>
             <UnitOutputDirectory Value="lib\CONSOLE-$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -120,11 +118,11 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="bin\Android\jniLibs\armeabi-v7a\libACBrLibNFe"/>
+            <Filename Value="bin\Android\jniLibs\armeabi-v7a\libACBrLibBPe"/>
           </Target>
           <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir);..\Comum;$(ACBrDir)\Fontes\ACBrComum"/>
-            <OtherUnitFiles Value="..\Comum;$(ACBrDir)\Fontes\ACBrComum;$(ACBrDir)\Fontes\ACBrDFe;$(ACBrDir)\Fontes\ACBrDFe\Comum;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\EscPos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base\Servicos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\PCNNFe;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base;$(ACBrDir)\Fontes\PCNComum;$(ACBrDir)\Fontes\ACBrDiversos;$(ACBrDir)\Fontes\ACBrSerial;$(ACBrDir)\Fontes\ACBrOpenSSL;$(ACBrDir)\Fontes\ACBrTCP;$(ACBrDir)\Fontes\ACBrIntegrador;$(ACBrDir)\Fontes\ACBrIntegrador\pcnVFPe;$(ACBrDir)\Fontes\Terceiros\synalist;$(ACBrDir)\Fontes\Terceiros\FPDF-Pascal;$(ACBrDir)\Fontes\Terceiros\GZIPUtils;$(ACBrDir)\Fontes\Terceiros\FastStringReplace;$(ACBrDir)\Fontes\Terceiros\CodeGear;$(ACBrDir)\Fontes\Terceiros\Ole;$(ACBrDir)\Fontes\Terceiros\DelphiZXingQRCode;$(ACBrDir)\Fontes\ACBrLibXML2"/>
+            <IncludeFiles Value="$(ProjOutDir);..\Comum"/>
+            <OtherUnitFiles Value="..\Comum;$(ACBrDir)\Fontes\ACBrComum;$(ACBrDir)\Fontes\ACBrDFe;$(ACBrDir)\Fontes\ACBrDFe\Comum;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\DABPe;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\Base\Servicos;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\Base;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\PCNBPe;$(ACBrDir)\Fontes\PCNComum;$(ACBrDir)\Fontes\ACBrDiversos;$(ACBrDir)\Fontes\ACBrSerial;$(ACBrDir)\Fontes\ACBrOpenSSL;$(ACBrDir)\Fontes\ACBrTCP;$(ACBrDir)\Fontes\ACBrIntegrador;$(ACBrDir)\Fontes\ACBrIntegrador\pcnVFPe;$(ACBrDir)\Fontes\Terceiros\synalist;$(ACBrDir)\Fontes\Terceiros\FPDF-Pascal;$(ACBrDir)\Fontes\Terceiros\GZIPUtils;$(ACBrDir)\Fontes\Terceiros\FastStringReplace;$(ACBrDir)\Fontes\Terceiros\CodeGear;$(ACBrDir)\Fontes\Terceiros\Ole;$(ACBrDir)\Fontes\Terceiros\DelphiZXingQRCode;$(ACBrDir)\Fontes\ACBrLibXML2"/>
             <UnitOutputDirectory Value="lib\CONSOLE-$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -159,11 +157,11 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="bin\Android\jniLibs\arm64-v8a\libACBrLibNFe"/>
+            <Filename Value="bin\Android\jniLibs\arm64-v8a\libACBrLibBPe"/>
           </Target>
           <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir);..\Comum;$(ACBrDir)\Fontes\ACBrComum"/>
-            <OtherUnitFiles Value="..\Comum;$(ACBrDir)\Fontes\ACBrComum;$(ACBrDir)\Fontes\ACBrDFe;$(ACBrDir)\Fontes\ACBrDFe\Comum;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\EscPos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base\Servicos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\PCNNFe;$(ACBrDir)\Fontes\PCNComum;$(ACBrDir)\Fontes\ACBrDiversos;$(ACBrDir)\Fontes\ACBrSerial;$(ACBrDir)\Fontes\ACBrOpenSSL;$(ACBrDir)\Fontes\ACBrTCP;$(ACBrDir)\Fontes\ACBrIntegrador;$(ACBrDir)\Fontes\ACBrIntegrador\pcnVFPe;$(ACBrDir)\Fontes\Terceiros\synalist;$(ACBrDir)\Fontes\Terceiros\FPDF-Pascal;$(ACBrDir)\Fontes\Terceiros\GZIPUtils;$(ACBrDir)\Fontes\Terceiros\FastStringReplace;$(ACBrDir)\Fontes\Terceiros\CodeGear;$(ACBrDir)\Fontes\Terceiros\Ole;$(ACBrDir)\Fontes\Terceiros\DelphiZXingQRCode;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base;$(ACBrDir)\Fontes\ACBrLibXML2"/>
+            <IncludeFiles Value="$(ProjOutDir);..\Comum"/>
+            <OtherUnitFiles Value="..\Comum;$(ACBrDir)\Fontes\ACBrComum;$(ACBrDir)\Fontes\ACBrDFe;$(ACBrDir)\Fontes\ACBrDFe\Comum;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\DABPe;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\Base\Servicos;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\Base;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\PCNBPe;$(ACBrDir)\Fontes\PCNComum;$(ACBrDir)\Fontes\ACBrDiversos;$(ACBrDir)\Fontes\ACBrSerial;$(ACBrDir)\Fontes\ACBrOpenSSL;$(ACBrDir)\Fontes\ACBrTCP;$(ACBrDir)\Fontes\ACBrIntegrador;$(ACBrDir)\Fontes\ACBrIntegrador\pcnVFPe;$(ACBrDir)\Fontes\Terceiros\synalist;$(ACBrDir)\Fontes\Terceiros\FPDF-Pascal;$(ACBrDir)\Fontes\Terceiros\GZIPUtils;$(ACBrDir)\Fontes\Terceiros\FastStringReplace;$(ACBrDir)\Fontes\Terceiros\CodeGear;$(ACBrDir)\Fontes\Terceiros\Ole;$(ACBrDir)\Fontes\Terceiros\DelphiZXingQRCode;$(ACBrDir)\Fontes\ACBrLibXML2"/>
             <UnitOutputDirectory Value="lib\CONSOLE-$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -198,11 +196,11 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="bin\Windows\CONSOLE-MT\ACBrNFe64"/>
+            <Filename Value="bin\Windows\CONSOLE-MT\ACBrBPe64"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);..\Comum;$(ACBrDir)\Fontes\ACBrComum"/>
-            <OtherUnitFiles Value="..\Comum;$(ACBrDir)\Fontes\ACBrComum;$(ACBrDir)\Fontes\ACBrDFe;$(ACBrDir)\Fontes\ACBrDFe\Comum;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\EscPos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base\Servicos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\PCNNFe;$(ACBrDir)\Fontes\PCNComum;$(ACBrDir)\Fontes\ACBrDiversos;$(ACBrDir)\Fontes\ACBrSerial;$(ACBrDir)\Fontes\ACBrOpenSSL;$(ACBrDir)\Fontes\ACBrTCP;$(ACBrDir)\Fontes\ACBrIntegrador;$(ACBrDir)\Fontes\ACBrIntegrador\pcnVFPe;$(ACBrDir)\Fontes\Terceiros\synalist;$(ACBrDir)\Fontes\Terceiros\FPDF-Pascal;$(ACBrDir)\Fontes\Terceiros\GZIPUtils;$(ACBrDir)\Fontes\Terceiros\FastStringReplace;$(ACBrDir)\Fontes\Terceiros\CodeGear;$(ACBrDir)\Fontes\Terceiros\Ole;$(ACBrDir)\Fontes\Terceiros\DelphiZXingQRCode;$(ACBrDir)\Fontes\ACBrLibXML2"/>
+            <OtherUnitFiles Value="..\Comum;$(ACBrDir)\Fontes\ACBrComum;$(ACBrDir)\Fontes\ACBrDFe;$(ACBrDir)\Fontes\ACBrDFe\Comum;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\DABPe;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\Base\Servicos;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\Base;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\PCNBPe;$(ACBrDir)\Fontes\PCNComum;$(ACBrDir)\Fontes\ACBrDiversos;$(ACBrDir)\Fontes\ACBrSerial;$(ACBrDir)\Fontes\ACBrOpenSSL;$(ACBrDir)\Fontes\ACBrTCP;$(ACBrDir)\Fontes\ACBrIntegrador;$(ACBrDir)\Fontes\ACBrIntegrador\pcnVFPe;$(ACBrDir)\Fontes\Terceiros\synalist;$(ACBrDir)\Fontes\Terceiros\FPDF-Pascal;$(ACBrDir)\Fontes\Terceiros\GZIPUtils;$(ACBrDir)\Fontes\Terceiros\FastStringReplace;$(ACBrDir)\Fontes\Terceiros\CodeGear;$(ACBrDir)\Fontes\Terceiros\Ole;$(ACBrDir)\Fontes\Terceiros\DelphiZXingQRCode;$(ACBrDir)\Fontes\ACBrLibXML2"/>
             <UnitOutputDirectory Value="lib\CONSOLE-$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -228,48 +226,9 @@
           </Other>
         </CompilerOptions>
       </Item6>
-      <Item7 Name="win32-i386-MT">
-        <MacroValues Count="2">
-          <Macro1 Name="ACBrDir" Value="$Env(ACBR_HOME)"/>
-          <Macro2 Name="LCLWidgetType" Value="nogui"/>
-        </MacroValues>
-        <CompilerOptions>
-          <Version Value="11"/>
-          <PathDelim Value="\"/>
-          <Target>
-            <Filename Value="bin\Windows\CONSOLE-MT\ACBrNFe32"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir);..\Comum;$(ACBrDir)\Fontes\ACBrComum"/>
-            <OtherUnitFiles Value="..\Comum;$(ACBrDir)\Fontes\ACBrComum;$(ACBrDir)\Fontes\ACBrDFe;$(ACBrDir)\Fontes\ACBrDFe\Comum;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\EscPos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base\Servicos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\PCNNFe;$(ACBrDir)\Fontes\PCNComum;$(ACBrDir)\Fontes\ACBrDiversos;$(ACBrDir)\Fontes\ACBrSerial;$(ACBrDir)\Fontes\ACBrOpenSSL;$(ACBrDir)\Fontes\ACBrTCP;$(ACBrDir)\Fontes\ACBrIntegrador;$(ACBrDir)\Fontes\ACBrIntegrador\pcnVFPe;$(ACBrDir)\Fontes\Terceiros\synalist;$(ACBrDir)\Fontes\Terceiros\FPDF-Pascal;$(ACBrDir)\Fontes\Terceiros\GZIPUtils;$(ACBrDir)\Fontes\Terceiros\FastStringReplace;$(ACBrDir)\Fontes\Terceiros\CodeGear;$(ACBrDir)\Fontes\Terceiros\Ole;$(ACBrDir)\Fontes\Terceiros\DelphiZXingQRCode;$(ACBrDir)\Fontes\ACBrLibXML2"/>
-            <UnitOutputDirectory Value="lib\CONSOLE-$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <SmartLinkUnit Value="True"/>
-            <TargetCPU Value="i386"/>
-            <TargetOS Value="win32"/>
-            <Optimizations>
-              <OptimizationLevel Value="3"/>
-            </Optimizations>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-              <StripSymbols Value="True"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <ExecutableType Value="Library"/>
-            </Options>
-          </Linking>
-          <Other>
-            <CustomOptions Value="-dMT -dNOGUI -dNOREPORT"/>
-          </Other>
-        </CompilerOptions>
-      </Item7>
       <SharedMatrixOptions Count="2">
-        <Item1 ID="236892288065" Modes="i386-CDECL-DEBUG,Linux-x86_64-MT,android-armeabi-v7a,android-arm64-v8a,Linux-i386-MT,win64-x86_64-MT,win32-i386-MT" Type="IDEMacro" MacroName="ACBrDir" Value="$Env(ACBR_HOME)"/>
-        <Item2 ID="523680024275" Modes="i386-CDECL-DEBUG,Linux-x86_64-MT,android-arm64-v8a,android-armeabi-v7a,Linux-i386-MT,win64-x86_64-MT,win32-i386-MT" Type="IDEMacro" MacroName="LCLWidgetType" Value="nogui"/>
+        <Item1 ID="236892288065" Modes="i386-CDECL-DEBUG,Linux-x86_64-MT,android-armeabi-v7a,android-arm64-v8a,Linux-i386-MT,win64-x86_64-MT" Type="IDEMacro" MacroName="ACBrDir" Value="$Env(ACBR_HOME)"/>
+        <Item2 ID="523680024275" Modes="i386-CDECL-DEBUG,Linux-x86_64-MT,android-arm64-v8a,android-armeabi-v7a,Linux-i386-MT,win64-x86_64-MT" Type="IDEMacro" MacroName="LCLWidgetType" Value="nogui"/>
       </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
@@ -277,13 +236,13 @@
     </PublishOptions>
     <RunParams>
       <local>
-        <HostApplicationFilename Value="C:\ProjetoACBr\ACBr\Projetos\ACBrLib\Testes\NFe\bin\ACBrLibNFeTest.exe"/>
+        <HostApplicationFilename Value="$(ProjSrcPath)\..\..\Testes\BPe\bin\ACBrLibBPeTest.exe"/>
       </local>
       <FormatVersion Value="2"/>
       <Modes Count="1">
         <Mode0 Name="default">
           <local>
-            <HostApplicationFilename Value="C:\ProjetoACBr\ACBr\Projetos\ACBrLib\Testes\NFe\bin\ACBrLibNFeTest.exe"/>
+            <HostApplicationFilename Value="$(ProjSrcPath)\..\..\Testes\BPe\bin\ACBrLibBPeTest.exe"/>
           </local>
         </Mode0>
       </Modes>
@@ -298,17 +257,17 @@
     </RequiredPackages>
     <Units Count="21">
       <Unit0>
-        <Filename Value="ACBrLibNFe.lpr"/>
+        <Filename Value="ACBrLibBPe.lpr"/>
         <IsPartOfProject Value="True"/>
       </Unit0>
       <Unit1>
-        <Filename Value="ACBrLibNFeST.pas"/>
+        <Filename Value="ACBrLibBPeST.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit1>
       <Unit2>
-        <Filename Value="ACBrLibNFeDataModule.pas"/>
+        <Filename Value="ACBrLibBPeDataModule.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="LibNFeDM"/>
+        <ComponentName Value="LibBPeDM"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit2>
@@ -325,11 +284,11 @@
         <IsPartOfProject Value="True"/>
       </Unit5>
       <Unit6>
-        <Filename Value="ACBrLibNFeConfig.pas"/>
+        <Filename Value="ACBrLibBPeConfig.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit6>
       <Unit7>
-        <Filename Value="ACBrLibNFeRespostas.pas"/>
+        <Filename Value="ACBrLibBPeRespostas.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit7>
       <Unit8>
@@ -337,7 +296,7 @@
         <IsPartOfProject Value="True"/>
       </Unit8>
       <Unit9>
-        <Filename Value="ACBrLibNFeConsts.pas"/>
+        <Filename Value="ACBrLibBPeConsts.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit9>
       <Unit10>
@@ -373,11 +332,11 @@
         <IsPartOfProject Value="True"/>
       </Unit17>
       <Unit18>
-        <Filename Value="ACBrLibNFeBase.pas"/>
+        <Filename Value="ACBrLibBPeBase.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit18>
       <Unit19>
-        <Filename Value="ACBrLibNFeMT.pas"/>
+        <Filename Value="ACBrLibBPeMT.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit19>
       <Unit20>
@@ -390,11 +349,11 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <Target>
-      <Filename Value="..\..\Testes\NFe\bin\ACBrNFe32"/>
+      <Filename Value="..\..\Testes\BPe\bin\ACBrBPe32"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir);..\Comum;$(ACBrDir)\Fontes\ACBrComum"/>
-      <OtherUnitFiles Value="..\Comum;$(ACBrDir)\Fontes\ACBrComum;$(ACBrDir)\Fontes\ACBrDFe;$(ACBrDir)\Fontes\ACBrDFe\Comum;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\EscPos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\DANFE\NFCe\FPDF;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\PCNNFe;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base\Servicos;$(ACBrDir)\Fontes\ACBrDFe\ACBrNFe\Base;$(ACBrDir)\Fontes\PCNComum;$(ACBrDir)\Fontes\ACBrDiversos;$(ACBrDir)\Fontes\ACBrSerial;$(ACBrDir)\Fontes\ACBrOpenSSL;$(ACBrDir)\Fontes\ACBrTCP;$(ACBrDir)\Fontes\ACBrIntegrador;$(ACBrDir)\Fontes\ACBrIntegrador\pcnVFPe;$(ACBrDir)\Fontes\Terceiros\synalist;$(ACBrDir)\Fontes\Terceiros\FPDF-Pascal;$(ACBrDir)\Fontes\Terceiros\GZIPUtils;$(ACBrDir)\Fontes\Terceiros\FastStringReplace;$(ACBrDir)\Fontes\Terceiros\CodeGear;$(ACBrDir)\Fontes\Terceiros\Ole;$(ACBrDir)\Fontes\Terceiros\DelphiZXingQRCode;$(ACBrDir)\Fontes\ACBrLibXML2"/>
+      <OtherUnitFiles Value="..\Comum;$(ACBrDir)\Fontes\ACBrComum;$(ACBrDir)\Fontes\ACBrDFe;$(ACBrDir)\Fontes\ACBrDFe\Comum;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\DABPe;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\Base\Servicos;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\Base;$(ACBrDir)\Fontes\ACBrDFe\ACBrBPe\PCNBPe;$(ACBrDir)\Fontes\PCNComum;$(ACBrDir)\Fontes\ACBrDiversos;$(ACBrDir)\Fontes\ACBrSerial;$(ACBrDir)\Fontes\ACBrOpenSSL;$(ACBrDir)\Fontes\ACBrTCP;$(ACBrDir)\Fontes\ACBrIntegrador;$(ACBrDir)\Fontes\ACBrIntegrador\pcnVFPe;$(ACBrDir)\Fontes\Terceiros\synalist;$(ACBrDir)\Fontes\Terceiros\FPDF-Pascal;$(ACBrDir)\Fontes\Terceiros\GZIPUtils;$(ACBrDir)\Fontes\Terceiros\FastStringReplace;$(ACBrDir)\Fontes\Terceiros\CodeGear;$(ACBrDir)\Fontes\Terceiros\Ole;$(ACBrDir)\Fontes\Terceiros\DelphiZXingQRCode;$(ACBrDir)\Fontes\ACBrLibXML2"/>
       <UnitOutputDirectory Value="lib\CONSOLE-$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
