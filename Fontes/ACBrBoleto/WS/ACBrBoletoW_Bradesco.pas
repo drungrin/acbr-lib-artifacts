@@ -738,8 +738,11 @@ begin
     Exit;
   LJsonObject := TACBrJSONObject.Create;
   try
-    LJsonObject.AddPair('registrarTitulo', 1); //1 = Registrar o título 2 = Somente consistir dados do título
-    LJsonObject.AddPair('codUsuario', 'APISERVIC');//FIXO.
+    if Boleto.Cedente.CedenteWS.IndicadorPix then
+    begin
+      LJsonObject.AddPair('registrarTitulo', 1); //1 = Registrar o título 2 = Somente consistir dados do título
+      LJsonObject.AddPair('codUsuario', 'APISERVIC');//FIXO.
+    end;
     if Boleto.Cedente.TipoInscricao = pJuridica then
     begin
       LJsonObject.AddPair('nroCpfCnpjBenef',    Copy(OnlyCPFCNPJAlphaNum(Boleto.Cedente.CNPJCPF), 1, 8));
@@ -771,11 +774,15 @@ begin
       LJsonObject.AddPair('ctitloCobrCdent', OnlyNumber(ATitulo.NossoNumero));//LEGADO
 
     //ctitloCliCdent: Identificador do título pelo beneficiário(Seu Número).
+    //if Boleto.Cedente.CedenteWS.IndicadorPix then
+      //LJsonObject.AddPair('ctitloCliCdent', ATitulo.SeuNumero)
+    //else
     LJsonObject.AddPair('ctitloCliCdent', Trim(IfThen(ATitulo.NumeroDocumento <> '',
-                                           ATitulo.NumeroDocumento,
-                                           IfThen(ATitulo.SeuNumero <> '',
-                                                  ATitulo.SeuNumero,
-                                                  OnlyNumber(ATitulo.NossoNumero)))));
+                                             ATitulo.NumeroDocumento,
+                                             IfThen(ATitulo.SeuNumero <> '',
+                                                    ATitulo.SeuNumero,
+                                                    OnlyNumber(ATitulo.NossoNumero)))));
+
     LJsonObject.AddPair('demisTitloCobr', DateTimeToDateBradesco(ATitulo.DataDocumento));
     LJsonObject.AddPair('dvctoTitloCobr', DateTimeToDateBradesco(ATitulo.Vencimento));
     LJsonObject.AddPair('cidtfdTpoVcto', 0);//FIXO.
@@ -794,7 +801,7 @@ begin
 
     LJsonObject.AddPair('vnmnalTitloCobr', ATitulo.ValorDocumento*100);
     LJsonObject.AddPair('qmoedaNegocTitlo', 0);//FIXO.
-    LJsonObject.AddPair('cespceTitloCobr', EspecieDocumento);
+    LJsonObject.AddPair('cespceTitloCobr', IntToStrZero(EspecieDocumento,2));
     LJsonObject.AddPair('cindcdAceitSacdo', 'N');
    //ctpoProteTitlo: Tipo de protesto automático do título: 1 = Dias corridos | 2 = Dias úteis.
     LJsonObject.AddPair('ctpoProteTitlo', 0);//NÃO Obrigatório;
@@ -1674,12 +1681,17 @@ function TBoletoW_Bradesco.AgenciaContaFormatada(const APadding : Integer) : Str
 var
   LAgencia, LConta, LZeros : String;
 begin
-  LConta := RemoveZerosEsquerda(ATitulo.ACBrBoleto.Cedente.Conta);
-  LAgencia := ATitulo.ACBrBoleto.Cedente.Agencia;
+  if Boleto.Configuracoes.WebService.Ambiente = tawsProducao then
+  begin
+    LConta := RemoveZerosEsquerda(ATitulo.ACBrBoleto.Cedente.Conta);
+    LAgencia := ATitulo.ACBrBoleto.Cedente.Agencia;
 
-  LZeros := Poem_Zeros('0',APadding - (Length(LAgencia) + Length(LConta)));
+    LZeros := Poem_Zeros('0',APadding - (Length(LAgencia) + Length(LConta)));
 
-  Result := LAgencia + LZeros + LConta;
+    Result := LAgencia + LZeros + LConta;
+  end
+  else
+    Result := '111111111111111111';
 end;
 
 function TBoletoW_Bradesco.AjustaFormatacaoValorNominal(const AValue: String): String;
