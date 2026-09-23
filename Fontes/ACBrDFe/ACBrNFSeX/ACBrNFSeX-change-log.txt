@@ -42,6 +42,28 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+22/09/2026
+-- ACBrNFSeXServicos.ini --
+[*] ACBR-9879 - Alteração na Versão e inclusão dos Parâmetros para a cidade de Ji-Parana/RO
+   Por: Italo Giurizzato Junior
+-- NFOnline.Provider --
+[*] Remoção de código sem utilização
+   Por: Italo Giurizzato Junior
+-- PadraoNacional.Provider --
+[*] ACBR-9890 - Alteração visando retornar o nome do arquivo e o XML nas propriedades:
+    AResumo.NomeArq e AResumo.XmlRetorno
+   Por: Adriano Teodorico
+-- Centi.LerXml --
+[*] ACBR-9890 - Alteração visando a leitura das novas tags.
+   Por: Diego Reckziegel
+-- Agili.GravarXml --
+[*] ACBR-9579 - Alteração visando usar os campos já existentes do Padrão Nacional
+    para gerar os campos da Reforma Tributária.
+   Por: Italo Giurizzato Junior
+-- NFOnline.Provider --
+[*] ACBR-9473 - Ajustes visando o envio do RPS para a API do Provedor.
+   Por: Italo Giurizzato Junior/Juliomar Marchetti
+
 21/09/2026
 -- ACBrNFSeXDANFSeRLPadraoNacional --
 [*] Alteração visando imprimir a UF do municipio de incidencia.
