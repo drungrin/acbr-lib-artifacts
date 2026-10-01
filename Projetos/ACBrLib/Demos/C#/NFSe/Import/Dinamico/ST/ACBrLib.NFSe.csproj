@@ -15,9 +15,9 @@
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<AssemblyVersion>1.0.17.0</AssemblyVersion>
-		<FileVersion>1.0.17.0</FileVersion>
-		<Version>1.0.17.0</Version>
+		<AssemblyVersion>1.0.18.0</AssemblyVersion>
+		<FileVersion>1.0.18.0</FileVersion>
+		<Version>1.0.18.0</Version>
 		<Platforms>AnyCPU;x86</Platforms>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
@@ -64,7 +64,7 @@
 		<When Condition=" '$(IsPacking)' == 'true' ">
 
 			<ItemGroup>
-				<PackageReference Include="ACBrLib.Core" Version="[1.2.48,)" />
+				<PackageReference Include="ACBrLib.Core" Version="[1.2.51,)" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
