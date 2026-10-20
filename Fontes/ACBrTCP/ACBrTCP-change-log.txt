@@ -36,6 +36,69 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+09/10/2026
+-- ACBrIMendes --
+[+] Inclusão do campo prodCodImendes em TACBrIMendesGrupo, retornado quando o saneamento é
+    realizado pelo código IMendes.
+[*] Removido o registro do corpo da requisição (Req.Body) no log dos métodos, que ficava
+    duplicado com o log do TACBrHTTP, inclusive com nível de log "Nenhum".
+[*] ConsultarDescricao e ConsultarRegimesEspeciais passam a registrar o corpo da resposta
+    no log, como os demais métodos.
+[-] TACBrIMendes.Clear deixa de criar o objeto RespostaErro quando ele ainda não existe.
+    por: Desenvolvimento Eagle
+
+09/10/2026
+-- ACBrIMendes --
+[+] Conformidade com o manual 3.3.26: novos campos e grupos
+[+] ConsultarAlterados com parâmetro opcional aLimite (dados "CNPJ|UF|LIMITE").
+[+] Propriedade MaxProdutosPorEnvio(default 300), validada no SaneamentoGrades.
+[+] Exceção EACBrIMendesLimiteRequisicoes para HTTP 429, com o valor do Retry-After.
+[*] TimeOut padrão alterado para 300000ms, conforme recomendação do manual.
+[*] Token do SaneamentoGrades passa a ser renovado após 2 horas de validade.
+[-] Correção do prodCodInterno no JSON do grupo.
+    por: Elias Cesar
+
+08/10/2026
+-- ACBrIMendes --
+[+] Ajustes para utilização do componente na Lib:
+    - Inclusão do método LoadFromIni em SaneamentoGradesRequest, InativarRequest e
+      RemoveDevolvidosRequest (seções [Emitente], [Portal], [Perfil], [Inativar],
+      [RemoveDevolvidos] e [Produto001..NNN]).
+    - Tokens de autenticação passam a ser descartados ao alterar CNPJ, Senha ou Ambiente.
+[-] Correção de vazamento de memória em TACBrIMendesSaneamentoResponse: Cabecalho, Grupos,
+    SemRetorno e BaixaSimilaridade não eram liberados.
+[-] Mensagem de objeto não preenchido passa a usar ACBrStr, corrigindo a acentuação.
+    por: Antonio Carlos Junior
+
+08/10/2026
+-- ACBrIMendes --
+[-] Campo substTribUfDestino movido de emit para perfil, conforme manual.
+    por: Elias Cesar
+
+07/10/2026
+-- ACBrIMendes --
+[*] URLs alteradas para https://consultatributos.com.br, conforme manual 3.3.26.
+[*] SaneamentoGrades passa a usar a rota saneamento_grades/v3/public/auth/SaneamentoGrades,
+    com autenticação por token (Bearer).
+[+] Renovação automática do token do Inativar, com base no campo "expiracao" retornado pelo login.
+[-] Correção da chave pSuspensaoImportacao no retorno do SaneamentoGrades.
+[-] Inativar deixa de enviar login e senha no header; usa apenas o token.
+[-] Inativar e RemoveDevolvidos passam a validar se há produtos informados, e a mensagem de
+    request vazio foi corrigida.
+[-] Datas vazias não são mais geradas como 30/12/1899 no JSON.
+    por: Elias Cesar
+
+06/10/2026
+-- ACBrIMendes --
+[*] URLs de produção e homologação alteradas para HTTPS (porta 8443), conforme solicitado pela IMendes.
+    ATENÇÃO: é necessário distribuir as DLLs do OpenSSL (recomendado 1.1) junto com a aplicação.
+[+] Inclusão do campo emit.substTribUfDestino no envio do SaneamentoGrades.
+[-] Campos opcionais do envio do SaneamentoGrades não são mais enviados quando vazios:
+    emit.municipio, dia, mes, ano, dataLimite, cnaeSecundario, regimeEspecial e
+    produtos.encontrado, dtultcons, dtrev (datas vazias eram enviadas como 1899-12-30).
+[-] Correção de vazamento de memória de InativarRequest e RemoveDevolvidosRequest
+    por: Elias Cesar
+
 23/09/2026
 -- ACBrIMendes --
 [+] Inclusão dos grupos precoFabrica e precoMaximoConsumidor no retorno do SaneamentoGrades.

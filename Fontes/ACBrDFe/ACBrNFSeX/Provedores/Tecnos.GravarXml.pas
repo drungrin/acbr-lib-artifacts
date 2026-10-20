@@ -40,6 +40,7 @@ uses
   SysUtils, Classes, StrUtils, IniFiles,
   ACBrXmlBase,
   ACBrXmlDocument,
+  ACBrDFe.Conversao,
   ACBrNFSeXClass,
   ACBrNFSeXGravarXml_ABRASFv2;
 
@@ -48,6 +49,8 @@ type
 
   TNFSeW_Tecnos201 = class(TNFSeW_ABRASFv2)
   protected
+    function tpEnteGovToStr(const t: TtpEnteGov): string;
+
     function GerarEnderecoTomador: TACBrXmlNode; override;
 
     function DefinirNameSpaceDeclaracao: string; override;
@@ -83,7 +86,6 @@ type
 implementation
 
 uses
-  ACBrDFe.Conversao,
   ACBrUtil.Strings,
   ACBrNFSeXConversao,
   ACBrNFSeXConsts;
@@ -358,19 +360,20 @@ begin
   Result.AppendChild(AddNode(tcInt, '#9', 'NumeroParcelas', 1, 3, 1,
                                                       NFSe.NumeroParcelas, ''));
 
-  Result.AppendChild(AddNode(tcStr, '#10', 'CodigoSituacaoTributariaPisCofins', 2, 2, 0,
+  Result.AppendChild(AddNode(tcStr, '#10', 'CodigoSituacaoTributariaPisCofins', 2, 2, 1,
                                CSTToStr(NFSe.Servico.Valores.tribFed.CST), ''));
 
-  Result.AppendChild(AddNode(tcStr, '#11', 'TipoRetencaoPisCofins', 1, 1, 0,
+  Result.AppendChild(AddNode(tcStr, '#11', 'TipoRetencaoPisCofins', 1, 1, 1,
          tpRetPisCofinsToStr(NFSe.Servico.Valores.tribFed.tpRetPisCofins), ''));
 
-  Result.AppendChild(AddNode(tcStr, '#1', 'TipoEnteGovernamental', 1, 1, 0,
+  Result.AppendChild(AddNode(tcStr, '#1', 'TipoEnteGovernamental', 1, 1, 1,
                                     tpEnteGovToStr(NFSe.IBSCBS.tpEnteGov), ''));
 
-  Result.AppendChild(AddNode(tcStr, '#1', 'TipoOperacao', 1, 1, 0,
+  if NFSe.IBSCBS.tpEnteGov <> tcgNenhum then
+    Result.AppendChild(AddNode(tcStr, '#1', 'TipoOperacao', 1, 1, 1,
                                    tpOperGovNFSeToStr(NFSe.IBSCBS.tpOper), ''));
 
-  Result.AppendChild(AddNode(tcStr, '#1', 'IndicadorDestinatarioServico', 1, 1, 0,
+  Result.AppendChild(AddNode(tcStr, '#1', 'IndicadorDestinatarioServico', 1, 1, 1,
                                         indDestToStr(NFSe.IBSCBS.indDest), ''));
 
   if (NFSe.IBSCBS.dest.xNome <> '') then
@@ -830,6 +833,12 @@ begin
     Result.AppendChild(AddNode(tcInt, '#1', 'EnviarMdic', 1, 1, 1,
                                                  NFSe.Servico.comExt.mdic, ''));
   end;
+end;
+
+function TNFSeW_Tecnos201.tpEnteGovToStr(const t: TtpEnteGov): string;
+begin
+  Result := EnumeradoToStr(t, ['0', '1', '2', '3', '4'],
+    [tcgNenhum, tcgUniao, tcgEstados, tcgDistritoFederal, tcgMunicipios]);
 end;
 
 end.

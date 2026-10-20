@@ -44,6 +44,29 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+19/10/2026
+-- DoACBrMDFeUnit --
+[-] ACBR-10070 - MDFe - Corrigido tratamento de erro nos comandos SetFormaEmissao e SetTipoImpressao 
+   Por: Renato Rubinho
+   Veja: https://www.projetoacbr.com.br/forum/topic/95417-acbr-10070-mdfesetformaemissao-forma-de-emiss%C3%A3o-inv%C3%A1lida-1/
+
+16/10/2026
+-- DoBoletoUnit --
+[-] Corrigido a sintaxe de resposta dos metodos: ConsultarTitulosPorPeriodo e EnviarBoleto
+   Por: Daniel de Morais
+   Veja: https://www.projetoacbr.com.br/forum/topic/95387-arquivo-saitxt-retorno-bancodobrasilapi-com-ok-na-primeira-linha/#comment-624187
+
+09/10/2026
+-- ACBrMonitor1 --
+[-] Corrige seleção do componente de impressão quando DANFe Simplificado Tipo 2 para considerar ESCPOS também.
+   Por: Diego Folieni
+   Veja: https://www.projetoacbr.com.br/forum/topic/95129-impress%C3%A3o-de-danfe-simplificada-tipo-2-na-bobina/?&_rid=124795#findComment-623343 
+
+07/10/2026
+--- Diversos ---
+[+] ACBR-9220 - Implementação do CIOT no Monitor
+    Por: Renato Rubinho
+
 02/10/2026
 -- ACBrMonitor1/DoACBrNFeUnit --
 [+] ACBR-9942 - Adiciona a impressão do DANFe Simplificado Tipo 2
