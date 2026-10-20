@@ -8,6 +8,15 @@ on:
 permissions:
   contents: write
 
+env:
+  UPSTREAM_URL: https://github.com/makerplanet/acbr-mirror.git
+  UPSTREAM_BRANCH: main
+  TARGET_BRANCH: master
+
+concurrency:
+  group: daily-sync-and-build
+  cancel-in-progress: false
+
 jobs:
   sync-build-release:
     runs-on: ubuntu-latest
@@ -21,39 +30,41 @@ jobs:
       - name: Checkout ACBr (Fork)
         uses: actions/checkout@v4
         with:
+          ref: ${{ env.TARGET_BRANCH }}
           path: build_env/ACBr # Checkou para dentro de build_env/ACBr
           fetch-depth: 0 
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      # 3. Sincronização com o Repositório Original
+      # 3. Sincronização com o mirror SVN do ACBr
       - name: Sync com Upstream
         id: sync
         working-directory: build_env/ACBr # Importante: comandos git rodam aqui dentro
+        shell: bash
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # URL do Projeto ACBr Original
-          UPSTREAM_URL="https://github.com/ProjetoACBr/ACBr.git"
-          BRANCH_NAME="master" # O ACBr costuma usar master, verifique se mudaram para main
-          
-          echo "Adicionando upstream..."
-          git remote add upstream $UPSTREAM_URL
-          git fetch upstream
+          echo "Configurando upstream..."
+          if git remote get-url upstream > /dev/null 2>&1; then
+            git remote set-url upstream "$UPSTREAM_URL"
+          else
+            git remote add upstream "$UPSTREAM_URL"
+          fi
+          git fetch --no-tags upstream "$UPSTREAM_BRANCH"
           
           BEFORE_MERGE=$(git rev-parse HEAD)
           
-          echo "Mesclando upstream/$BRANCH_NAME..."
-          git merge upstream/$BRANCH_NAME --no-edit
-          git push origin $BRANCH_NAME
+          echo "Mesclando upstream/$UPSTREAM_BRANCH..."
+          git merge "upstream/$UPSTREAM_BRANCH" --no-edit
+          git push origin "HEAD:refs/heads/$TARGET_BRANCH"
           
           AFTER_MERGE=$(git rev-parse HEAD)
           
           if [ "$BEFORE_MERGE" != "$AFTER_MERGE" ]; then
-            echo "changes_detected=true" >> $GITHUB_OUTPUT
+            echo "changes_detected=true" >> "$GITHUB_OUTPUT"
             echo "Novas alterações detectadas."
           else
-            echo "changes_detected=false" >> $GITHUB_OUTPUT
+            echo "changes_detected=false" >> "$GITHUB_OUTPUT"
             echo "Nenhuma alteração nova."
           fi
 
@@ -90,7 +101,7 @@ jobs:
       # 6. Criar Release
       - name: Criar Release no GitHub
         if: steps.sync.outputs.changes_detected == 'true' || github.event_name == 'workflow_dispatch'
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: build-${{ env.ZIP_NAME }}
           name: Build Diário ${{ env.ZIP_NAME }}

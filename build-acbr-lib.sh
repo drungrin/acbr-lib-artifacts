@@ -41,7 +41,7 @@ fi
 
 if [ ! -d "ACBr" ]; then
     echo "--> [INIT] Cloning ACBr..."
-    git clone https://github.com/ProjetoACBr/ACBr.git
+    git clone --branch main --single-branch https://github.com/makerplanet/acbr-mirror.git ACBr
 fi
 
 if [ ! -d "PowerPDF" ]; then

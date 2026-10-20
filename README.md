@@ -16,7 +16,7 @@ O objetivo principal é demonstrar como automatizar o ciclo de vida de desenvolv
 
 ### Como funciona a Automação?
 
-1.  **Sincronização:** Diariamente, um script verifica novos commits no [repositório oficial do ACBr](https://github.com/ProjetoACBr/ACBr).
+1.  **Sincronização:** Diariamente, às 06:00 UTC (03:00 no horário de Brasília), o workflow incorpora novos commits da branch `main` do [mirror SVN makerplanet/acbr-mirror](https://github.com/makerplanet/acbr-mirror) na branch `master` deste repositório.
 2.  **Ambiente:** Um container Docker (`drungrin/lazarus-builder`) é provisionado com o ambiente Lazarus pré-configurado.
 3.  **Compilação:** O pipeline executa a compilação das bibliotecas nativas para **Linux (x64)** e **Windows (x64)**, garantindo a integridade do código.
 4.  **Verificação:** O processo valida se o código atual do *upstream* é compilável em um ambiente limpo, servindo como um "Health Check" do projeto.
@@ -43,9 +43,19 @@ A infraestrutura como código (IaC) deste repositório utiliza a seguinte stack:
 
 ### Estrutura do Workflow
 
-* O sistema mantém o fork sincronizado via `git merge upstream/master`.
+* O sistema busca `makerplanet/acbr-mirror/main` e mantém a branch `master` sincronizada via `git merge upstream/main`.
+* O agendamento diário e o disparo manual compartilham uma fila para evitar sincronizações simultâneas.
 * A compilação é feita em ambiente efêmero (limpo) a cada execução.
-* Estratégias de cache são utilizadas para otimizar o tempo de execução do runner.
+* O build ocorre quando o merge incorpora alterações ou quando o workflow é disparado manualmente.
+* O script de build também usa o novo mirror e mantém o checkout no diretório `ACBr`.
+
+### Migração do Histórico
+
+O antigo repositório `ProjetoACBr/ACBr` ficou indisponível. O novo mirror mantém o código do SVN `trunk2`, mas os commits recentes têm hashes diferentes dos da origem anterior.
+
+A revisão SVN `r48491`, última incorporada antes da migração, tem a mesma árvore de arquivos nas duas origens: `3202212fc875b35dc927d23ef19daf2f7bfccaf8` no histórico antigo e `6b4156c1ed886641e56da0d01cead1ed02605d62` no novo mirror. Um commit inicial com a estratégia `ours` reconhece essa revisão equivalente como já incorporada, preservando os arquivos locais. Depois disso, as atualizações usam merges normais de `upstream/main`.
+
+A estratégia `ours` é usada somente nessa migração inicial da revisão equivalente; o workflow diário aplica as alterações do mirror com o merge padrão.
 
 ---
 
@@ -53,7 +63,8 @@ A infraestrutura como código (IaC) deste repositório utiliza a seguinte stack:
 
 Todo o código fonte do componente ACBr pertence ao **Projeto ACBr** e seus colaboradores.
 
-* **Código Fonte Original:** [github.com/ProjetoACBr/ACBr](https://github.com/ProjetoACBr/ACBr)
+* **Código Fonte Original:** [SVN trunk2 do Projeto ACBr](https://svn.code.sf.net/p/acbr/code/trunk2/)
+* **Mirror utilizado na automação:** [makerplanet/acbr-mirror](https://github.com/makerplanet/acbr-mirror)
 * **Licença:** LGPL (Lesser General Public License).
 
 Este repositório respeita a licença original e o trabalho dos autores. O foco aqui é estritamente nas práticas de Engenharia de Software e Automação.
