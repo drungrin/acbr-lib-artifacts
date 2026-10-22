@@ -42,6 +42,49 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+20/10/2026
+-- ACBrNFSeXProviderABRASFv2/ACBrNFSeXLerXml_ABRASFv2/ACBrNFSeXWebservicesResponse --
+[*] ACBR-9931 - Alteração visando o retorno da Chave de Acesso Nacional ao ler o retorno da 
+    Consulta da NFSe por RPS.
+   Por: Italo Giurizzato Junior
+-- ISSNet.Provider --
+[*] ACBR-10033 - Alteração visando a leitura correta do Retorno do Envio do Evento.
+   Por: kauajuno
+-- ACBrNFSeXProviderBase --
+[*] ACBR-10035 - Alteração visando considerar a URL do Padrão Nacional em vez do provedor
+    quando a propriedade LayoutNFSe estiver com o valor lnfsPadraoNacionalv1.
+   Por: Marcos Rogerio Zaccaro
+-- PadraoNacional.Provider --
+[*] ACBR-10047 - Alteração visando considerar os demais tipos de cancelamento no 
+    Tratar Retorno do Enviar Eventos.
+   Por: Leandro Ledo
+[*] ACBR-10051 - Alteração visando considerar os demais tipos de cancelamento no 
+    Consultar Eventos.
+   Por: Armando Boza
+[*] ACBR-10062 - Alteração visando retornar no campo CodigoVerificacao a chave de acesso.
+   Por: Alex Heinen
+-- NFOnline.GravarXml --
+[*] ACBR-9921 - Alteração visando gerar o XML conforme esperado pelo provedor.
+   Por: Italo Giurizzato Junior
+-- ACBrNFSeXLerXml --
+[*] ACBR-9592 - Alteração visando limpar a lista ItemServico ao checar se o campo
+    Discriminacao possui uma lista de itens.
+   Por: Italo Giurizzato Junior
+-- ACBrNFSeXServicos --
+[*] Cidades atendidas pelo provedor EL que foi ativado a API nova que usa o layout do Padrão Nacional.
+   Por: Italo Giurizzato Junior
+[*] Mudança de URLs e migração para o Layout Nacional no município de Sao Joao da Barra/RJ
+	Por: Baltazar
+[*] ACBR-10089 - Mudança de URLs e migração para o Layout Nacional no município de Cuiabá/MT
+	Veja: https://www.projetoacbr.com.br/forum/topic/95464-acbr-10089-cuiab%C3%A1-mt-aderiu-novo-webservice-provedor-issnet-com-layout-padr%C3%A3o-nacional-101/
+	Por: Reginaldo Rodrigues Pereira
+[*] ACBR-10079 - O município de Nova Mutum/MT aderiu ao Padrão Nacional
+	Veja: https://www.projetoacbr.com.br/forum/topic/95439-acbr-10079-alterar-provedor-de-nova-mutum-mt/
+	Por: Diego Reckziegel
+[*] ACBR-10063 - O município de Santa Maria do Herval/RS aderiu ao Padrão Nacional
+	Veja: https://www.projetoacbr.com.br/forum/topic/95418-acbr-10063-altera%C3%A7%C3%A3o-provedor-da-cidade-de-santa-maria-do-herval-rs/
+	Por: MGWare Dev
+
 19/10/2026
 -- Diversos --
 [+] Ajustes visando adicionar novos logs para melhorar análise da LibNFSe.
