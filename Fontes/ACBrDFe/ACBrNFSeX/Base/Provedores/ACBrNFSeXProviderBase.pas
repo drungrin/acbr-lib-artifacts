@@ -44,6 +44,9 @@ uses
   ACBrNFSeXLerXml, ACBrNFSeXGravarXml, ACBrNFSeXNotasFiscais,
   ACBrNFSeXWebserviceBase, ACBrNFSeXWebservicesResponse;
 
+const
+  EnumsResponsavelRetencaoSuportados = [rtTomador, rtIntermediario, rtNenhum];
+
 type
   TACBrNFSeXProvider = class(TInterfacedObject, IACBrNFSeXProvider)
   private
@@ -221,6 +224,7 @@ type
     procedure AssinarObterDANFSE(Response: TNFSeObterDANFSEResponse); virtual;
     procedure TratarRetornoObterDANFSE(Response: TNFSeObterDANFSEResponse); virtual; abstract;
 
+    function EnumeradoResponsavelRetencaoEhSuportado(const t: TnfseResponsavelRetencao): Boolean;
   public
     constructor Create(AOwner: TACBrDFe);
     destructor Destroy; override;
@@ -341,6 +345,7 @@ implementation
 
 uses
   IniFiles,
+  TypInfo,
   ACBrConsts,
   ACBrUtil.DateTime,
   ACBrUtil.Base, ACBrUtil.Strings, ACBrUtil.FilesIO, ACBrUtil.XMLHTML,
@@ -1153,15 +1158,16 @@ begin
   else
     Data := Now;
 
-  aPath := aConfig.Arquivos.GetPathNFSe(Data, aConfig.Geral.Emitente.CNPJ,
-                        aConfig.Geral.Emitente.DadosEmitente.InscricaoEstadual);
-
-  aNomeArq := TACBrNFSeX(FAOwner).GetNumID(aNota.NFSe) + '-nfse.xml';
-  aNota.NomeArq := PathWithDelim(aPath) + aNomeArq;
   aNota.Confirmada := True;
 
   if FAOwner.Configuracoes.Arquivos.Salvar then
   begin
+    aPath := aConfig.Arquivos.GetPathNFSe(Data, aConfig.Geral.Emitente.CNPJ,
+                        aConfig.Geral.Emitente.DadosEmitente.InscricaoEstadual);
+
+    aNomeArq := TACBrNFSeX(FAOwner).GetNumID(aNota.NFSe) + '-nfse.xml';
+    aNota.NomeArq := PathWithDelim(aPath) + aNomeArq;
+
     case ConfigGeral.FormatoArqNota of
       tfaJson:
         Extensao := '.json';
@@ -1207,14 +1213,14 @@ var
 begin
   aConfig := TConfiguracoesNFSe(FAOwner.Configuracoes);
 
-  aPath := aConfig.Arquivos.GetPathNFSe(0, aConfig.Geral.Emitente.CNPJ,
-                        aConfig.Geral.Emitente.DadosEmitente.InscricaoEstadual);
-
-  aNomeArq := NumeroNFSe + '-nfse.xml';
-  aNomeArq := PathWithDelim(aPath) + aNomeArq;
-
   if FAOwner.Configuracoes.Arquivos.Salvar then
   begin
+    aPath := aConfig.Arquivos.GetPathNFSe(0, aConfig.Geral.Emitente.CNPJ,
+                        aConfig.Geral.Emitente.DadosEmitente.InscricaoEstadual);
+
+    aNomeArq := NumeroNFSe + '-nfse.xml';
+    aNomeArq := PathWithDelim(aPath) + aNomeArq;
+
     case ConfigGeral.FormatoArqNota of
       tfaJson:
         Extensao := '.json';
@@ -1272,13 +1278,13 @@ var
 begin
   aConfig := TConfiguracoesNFSe(FAOwner.Configuracoes);
 
-  aPath := aConfig.Arquivos.GetPathEvento(DataProc, aConfig.Geral.Emitente.CNPJ,
-                        aConfig.Geral.Emitente.DadosEmitente.InscricaoEstadual);
-
-  aNomeArq := PathWithDelim(aPath) + aNome + '.xml';
-
   if FAOwner.Configuracoes.Arquivos.Salvar then
   begin
+    aPath := aConfig.Arquivos.GetPathEvento(DataProc, aConfig.Geral.Emitente.CNPJ,
+                        aConfig.Geral.Emitente.DadosEmitente.InscricaoEstadual);
+
+    aNomeArq := PathWithDelim(aPath) + aNome + '.xml';
+
     case ConfigGeral.FormatoArqEvento of
       tfaJson:
         Extensao := '.json';
@@ -1318,13 +1324,13 @@ var
 begin
   aConfig := TConfiguracoesNFSe(FAOwner.Configuracoes);
 
-  aPath := aConfig.Arquivos.GetPathCan(0, aConfig.Geral.Emitente.CNPJ,
-                        aConfig.Geral.Emitente.DadosEmitente.InscricaoEstadual);
-
-  aNomeArq := PathWithDelim(aPath) + aNome + '.xml';
-
   if FAOwner.Configuracoes.Arquivos.Salvar then
   begin
+    aPath := aConfig.Arquivos.GetPathCan(0, aConfig.Geral.Emitente.CNPJ,
+                        aConfig.Geral.Emitente.DadosEmitente.InscricaoEstadual);
+
+    aNomeArq := PathWithDelim(aPath) + aNome + '.xml';
+
     case ConfigGeral.FormatoArqEvento of
       tfaJson:
         Extensao := '.json';
@@ -1452,6 +1458,12 @@ begin
   end;
 
   FDefaultNameSpaceURI := aNameSpace;
+end;
+
+function TACBrNFSeXProvider.EnumeradoResponsavelRetencaoEhSuportado(
+  const t: TnfseResponsavelRetencao): Boolean;
+begin
+  Result := (t in EnumsResponsavelRetencaoSuportados);
 end;
 
 function TACBrNFSeXProvider.SituacaoLoteRpsToStr(const t: TSituacaoLoteRps): string;
@@ -1741,23 +1753,21 @@ end;
 function TACBrNFSeXProvider.ResponsavelRetencaoToStr(
   const t: TnfseResponsavelRetencao): string;
 begin
-//  Result := EnumeradoToStr(t,
-//                           ['1', '2'],
-//                           [rtTomador, rtIntermediario]);
+  if not EnumeradoResponsavelRetencaoEhSuportado(t) then
+    raise EACBrException.Create('Valor inválido para TnfseResponsavelRetencao: '+
+      GetEnumName(TypeInfo(TnfseResponsavelRetencao), Ord(t)) );
+
   Result := EnumeradoToStr(t,
-                           ['1', '', '2', ''],
-                           [rtTomador, rtPrestador, rtIntermediario, rtNenhum]);
+                           ['1', '2', ''],
+                           [rtTomador, rtIntermediario, rtNenhum]);
 end;
 
 function TACBrNFSeXProvider.StrToResponsavelRetencao(out ok: boolean;
   const s: string): TnfseResponsavelRetencao;
 begin
-//  Result := StrToEnumerado(ok, s,
-//                           ['1', '2'],
-//                           [rtTomador, rtIntermediario]);
   Result := StrToEnumerado(ok, s,
-                           ['1', '', '2', ''],
-                           [rtTomador, rtPrestador, rtIntermediario, rtNenhum]);
+                           ['1', '2', ''],
+                           [rtTomador, rtIntermediario, rtNenhum]);
 end;
 
 function TACBrNFSeXProvider.ResponsavelRetencaoDescricao(
@@ -1766,7 +1776,6 @@ begin
   case t of
     rtTomador       : Result := '1 - Tomador';
     rtIntermediario : Result := '2 - Intermediário';
-    rtPrestador     : Result := '3 - Prestador';
   else
     Result := '';
   end;
