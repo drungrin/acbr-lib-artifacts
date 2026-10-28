@@ -21,7 +21,7 @@
       <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="5"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="488"/>
+      <BuildNr Value="489"/>
       <Language Value="0416"/>
       <StringTable CompanyName="Projeto ACBr" FileDescription="ACBrNFe - BIblioteca para emissão e impressão de nota fiscal eletrônica" InternalName="ACBrLibNFE" LegalCopyright="Projeto ACBr" LegalTrademarks="Projeto ACBr" ProductName="ACBrNFe " ProductVersion="0.4.6.0"/>
     </VersionInfo>
@@ -498,7 +498,7 @@
         </Mode0>
       </Modes>
     </RunParams>
-    <RequiredPackages Count="8">
+    <RequiredPackages Count="9">
       <Item1>
         <PackageName Value="ACBr_Integrador"/>
       </Item1>
@@ -523,6 +523,9 @@
       <Item8>
         <PackageName Value="FCL"/>
       </Item8>
+      <Item9>
+        <PackageName Value="ACBr_NFe_DanfeFPDF"/>
+      </Item9>
     </RequiredPackages>
     <Units Count="22">
       <Unit0>
