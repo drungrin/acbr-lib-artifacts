@@ -39,6 +39,20 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+11/11/2026
+-- ACBrDFe.RTC.Classes/ACBrDFe.RTC.XmlWriter/ACBrDFeConsts.pas
+[*] Ajustes na geração do gIBSCBS da NFeABI, correções nos Assign, inclusão de novas constantes.
+   Por: Leonardo Gomes/Italo Giurizzato Junior
+
+-- ACBrDFe.Conversao --
+[+] Acrescentado o enumerado tnNenhum ao tipo TTipoNavegacao visando não gerar a tag,
+    uma vez que ela é opcional.
+   Por: Italo Giurizzato Junior
+-- ACBrDFe.RTC.IniWriter/ACBrDFe.RTC.XmlWriter --
+[-] Alteração visando não gerar os campos tpALCZFMCBS e nProcSuframa se o DF-e
+    não for NF-e/NFC-e.
+   Por: Jonathan Gonçalves
+
 10/11/2026
 -- ACBrDFe.Conversao/ACBrDFe.RTC.Classes/ACBrDFe.RTC.IniReader --
 -- ACBrDFe.RTC.IniWriter/ACBrDFe.RTC.XmlReader/ACBrDFe.RTC.XmlWriter --

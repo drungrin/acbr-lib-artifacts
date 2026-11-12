@@ -418,7 +418,7 @@ function TDFeRTCXmlWriter.Gerar_IBSCBSNFeABI(IBSCBS: TIBSCBS): TACBrXmlNode;
 begin
   Result := nil;
 
-  if IBSCBS.CST in [cst200, cst220, cst221] then
+  if IBSCBS.CST in [cst200, cst220, cst221, cst410, cst820] then
     Result := Gerar_gIBSCBSNFeABI(IBSCBS.gIBSCBS);
 end;
 
@@ -459,13 +459,13 @@ begin
   Result.AppendChild(AddNode(tcDe2, '#4', 'vOperacIndiv', 1, 15, 1,
                                           gIBSCBS.vOperacIndiv, DSC_VBCIBSCBS));
 
-  Result.AppendChild(AddNode(tcDe2, '#4', 'vTornaIndiv', 1, 15, 1,
+  Result.AppendChild(AddNode(tcDe2, '#4', 'vTornaIndiv', 1, 15, 0,
                                            gIBSCBS.vTornaIndiv, DSC_VBCIBSCBS));
 
-  Result.AppendChild(AddNode(tcDe2, '#4', 'vRedAjusteIndiv', 1, 15, 1,
+  Result.AppendChild(AddNode(tcDe2, '#4', 'vRedAjusteIndiv', 1, 15, 0,
                                        gIBSCBS.vRedAjusteIndiv, DSC_VBCIBSCBS));
 
-  Result.AppendChild(AddNode(tcDe2, '#4', 'vRedSocialIndiv', 1, 15, 1,
+  Result.AppendChild(AddNode(tcDe2, '#4', 'vRedSocialIndiv', 1, 15, 0,
                                        gIBSCBS.vRedSocialIndiv, DSC_VBCIBSCBS));
 
   Result.AppendChild(AddNode(tcDe2, '#4', 'vBC', 1, 15, 1,
@@ -694,11 +694,14 @@ function TDFeRTCXmlWriter.Gerar_gALCZFMCBS(
 begin
   Result := FDocument.CreateElement('gALCZFMCBS');
 
-  Result.AppendChild(AddNode(tcStr, 'UB66b', 'tpALCZFMCBS', 1, 1, 1,
+  if ModelosDFe in [mdfNFe, mdfNFCe, mdfNFeABI] then
+  begin
+    Result.AppendChild(AddNode(tcStr, 'UB66b', 'tpALCZFMCBS', 1, 1, 1,
                     tpALCZFMCBSToStr(gALCZFMCBS.tpALCZFMCBS), DSC_TPALCZFMCBS));
 
-  Result.AppendChild(AddNode(tcStr, 'UB66c', 'nProcSuframa', 8, 12, 0,
+    Result.AppendChild(AddNode(tcStr, 'UB66c', 'nProcSuframa', 8, 12, 0,
                                     gALCZFMCBS.nProcSuframa, DSC_NPROCSUFRAMA));
+  end;
 
   Result.AppendChild(AddNode(tcDe4, 'UB66d', 'pAliqEfetRegCBS', 1, 7, 1,
                               gALCZFMCBS.pAliqEfetRegCBS, DSC_PALIQEFETREGCBS));
