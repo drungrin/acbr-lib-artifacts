@@ -42,6 +42,36 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+17/11/2026
+-- Diversos --
+[*] Vários ajustes visando a não sobrescrita do valor de finNFSe e a correção
+    para não ocorrer AV ao ler o grupo gPgtoVinc.
+   Por: Italo Giurizzato Junior
+-- ACBrNFSeXServicos -- 
+[*] ACBR-10247 - O município de Janaúba/SC aderiu ao Padrão Nacional
+	Veja: https://discord.com/channels/798697718800318484/800042186783588364/1572306599588925655
+	Por: Leandro Figueiredo
+[*] ACBR-10246 - O município de Guaramirim/SC aderiu ao Padrão Nacional
+	Veja: https://www.projetoacbr.com.br/forum/topic/96059-nt-2026005-preenchimento-do-ini-para-adequa%C3%A7%C3%A3o-%C3%A0-nt-2026005-%E2%80%93-simples-nacional/#comment-628486
+	Por: Diogo Loff
+[*] ACBR-10237 - O município de Pinhalzinho/SC aderiu ao Padrão Nacional
+	Veja: https://www.projetoacbr.com.br/forum/topic/96024-nfs-e-provedor-padrao-nacional-pinhalzinho-sc-mudança-para-o-padrão-nacional/
+	Por: Léo - Info ON Sistemas
+-- ACBrNFSeX.LerIni.pas/ACBrNFSeXLerXml/PadraoNacional.LerXml --
+[*] ACBR-10234 - Alteração visando a leitura do campo finNFSe na seção IdentificacaoRPS.
+   Por: Italo Giurizzato Junior
+-- ACBrNFSeX.LerIni --
+[*] ACBR-10157 - Alteração visando a leitura da seção IBSCBSNFSE ao ler o arquivo INI
+    de um RPS/DPS.
+   Por: Italo Giurizzato Junior
+-- ISSSaoPaulo.GravarXml/ISSSaoPaulo.LerXml --
+[*] ACBR-10145 - Primeira etapa da implementação dos novos campos.
+   Por: Italo Giurizzato Junior
+-- NFOnline.GravarXml --
+[*] ACBR-10131 - Ajustes visando o processamento ser realizado com sucesso pelo
+    provedor.
+   Por: Geraldo Moura/Italo Giurizzato Junior
+
 16/11/2026
 -- ISSNet.Provider/PadraoNacional.LerXml --
 [+] ACBR-9915 - Ajustes visando o provedor ISSNet.

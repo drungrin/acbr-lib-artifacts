@@ -418,6 +418,15 @@ const
   TtpNFCreditoArrayStrings: array[TtpNFCredito] of string = ('', '01', '02', '03',
     '04', '05', '06');
 
+type
+  TcAtivSN = (caNenhum, caRevendaMercadorias, caOperacoesSemIncidenciaICMS,
+              caVendaMercadorias, caOperacoesIdustrializacaoZFM,
+              caOperacoesNaoTributaveis);
+
+const
+  cAtivSNArrayStrings: array[TcAtivSN] of string = ('', '01', '02', '03', '04',
+    '90');
+
 {
   Declaração das funções de conversão
 }
@@ -502,6 +511,9 @@ function StrToTtpGuia(const s: string): TtpGuia;
 // Reforma Tributária
 function tpNFCreditoToStr(const t: TtpNFCredito): string;
 function StrTotpNFCredito(const s: string): TtpNFCredito;
+
+function cAtivSNToStr(const t: TcAtivSN): string;
+function StrTocAtivSN(const s: string): TcAtivSN;
 
 implementation
 
@@ -851,36 +863,21 @@ end;
 
 function BandeiraCartaoToDescStr(const t: TBandeiraCartao): string;
 begin
-  case t of
-    bcVisa:            Result := 'Visa';
-    bcMasterCard:      Result := 'MasterCard';
-    bcAmericanExpress: Result := 'AmericanExpress';
-    bcSorocred:        Result := 'Sorocred';
-    bcDinersClub:      Result := 'Diners Club';
-    bcElo:             Result := 'Elo';
-    bcHipercard:       Result := 'Hipercard';
-    bcAura:            Result := 'Aura';
-    bcCabal:           Result := 'Cabal';
-    bcAlelo:           Result := 'Alelo';
-    bcBanesCard:       Result := 'BanesCard';
-    bcCalCard:         Result := 'CalCard';
-    bcCredz:           Result := 'Credz';
-    bcDiscover:        Result := 'Discover';
-    bcGoodCard:        Result := 'GoodCard';
-    bcGreenCard:       Result := 'GreenCard';
-    bcHiper:           Result := 'Hiper';
-    bcJcB:             Result := 'JcB';
-    bcMais:            Result := 'Mais';
-    bcMaxVan:          Result := 'MaxVan';
-    bcPolicard:        Result := 'Policard';
-    bcRedeCompras:     Result := 'RedeCompras';
-    bcSodexo:          Result := 'Sodexo';
-    bcValeCard:        Result := 'ValeCard';
-    bcVerocheque:      Result := 'Verocheque';
-    bcVR:              Result := 'VR';
-    bcTicket:          Result := 'Ticket';
-    bcOutros:          Result := 'Outros'
-  end;
+  // Usa EnumeradoToStr em vez de "case" para nao gerar AV quando "t" estiver
+  // fora da faixa do enumerado (ex.: TBandeiraCartao(-1)). No FPC o case e
+  // compilado como jump table sem verificacao de limites.
+  result := EnumeradoToStr(t, ['Visa', 'MasterCard', 'AmericanExpress', 'Sorocred',
+                               'Diners Club', 'Elo', 'Hipercard', 'Aura', 'Cabal',
+                               'Alelo', 'BanesCard', 'CalCard', 'Credz', 'Discover',
+                               'GoodCard', 'GreenCard', 'Hiper', 'JcB', 'Mais',
+                               'MaxVan', 'Policard', 'RedeCompras', 'Sodexo',
+                               'ValeCard', 'Verocheque', 'VR', 'Ticket', 'Outros'],
+                              [bcVisa, bcMasterCard, bcAmericanExpress, bcSorocred,
+                               bcDinersClub, bcElo, bcHipercard, bcAura, bcCabal,
+                               bcAlelo, bcBanesCard, bcCalCard, bcCredz, bcDiscover,
+                               bcGoodCard, bcGreenCard, bcHiper, bcJcB, bcMais,
+                               bcMaxVan, bcPolicard, bcRedeCompras, bcSodexo,
+                               bcValeCard, bcVerocheque, bcVR, bcTicket, bcOutros]);
 end;
 
 function BandeiraCartaoToStr(const t: TBandeiraCartao): string;
@@ -1672,6 +1669,26 @@ begin
     end;
   end;
   raise EACBrException.CreateFmt('Valor string inválido para TtpNFCredito: %s', [s]);
+end;
+
+function cAtivSNToStr(const t: TcAtivSN): string;
+begin
+  Result := cAtivSNArrayStrings[t];
+end;
+
+function StrTocAtivSN(const s: string): TcAtivSN;
+var
+  idx: TcAtivSN;
+begin
+  for idx:= Low(cAtivSNArrayStrings) to High(cAtivSNArrayStrings) do
+  begin
+    if cAtivSNArrayStrings[idx] = s then
+    begin
+      Result := idx;
+      exit;
+    end;
+  end;
+  raise EACBrException.CreateFmt('Valor string inválido para TcAtivSN: %s', [s]);
 end;
 
 initialization
