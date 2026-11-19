@@ -44,6 +44,20 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+18/11/2026
+-- ACBrNFe.XmlWriter --
+[*] ACBR-10244 - Criado propriedades privadas para definir se deve ou não gerar o grupo ICMS.
+   Por: Italo Giurizzato Junior
+-- ACBrDANFCeFortesFr --
+[+] ACBR-9753 - Adiciona novo impresso para os eventos da NFC-e no motor Fortes Report.
+   Por: Diego Folieni
+   Veja: https://www.projetoacbr.com.br/forum/topic/96091-disponibilizado-impresso-de-evento-para-nfc-e-no-fortes-report/ 
+-- ACBrNFe.Conversao/pcnConversaoNFe --
+[*] Correção ortográfica no enumerado caOperacoesIndustrializacaoZFM que estava como caOperacoesIdustrializacaoZFM.
+-- ACBrNFe.IniReader --
+[*] Trocado o texto fixo "emit" pela variável sSecao pois o nome da seção pode ser Emitente ou emit ao fazer a leitura.
+   Por: Italo Giurizzato Junior
+
 17/11/2026
 -- ACBrNFe.XmlWriter --
 [*] ACBR-10236 - Alteração visando gerar o grupo ICMSPrevistoPagtoAntecip também para o

@@ -44,6 +44,15 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+18/11/2026
+-- ACBrCTe.XmlWriter --
+[-] ACBR-10256 - Correção visando gerar corretamente o grupo IBSCBS para o CTe Simplificado
+   Por: vinisted
+-- ACBrCTe.XmlWriter --
+[*] ACBR-10242 - Alteração visando gerar as tags dhCont e xJust para o tpEmis igual a
+    teContingencia.
+   Por: AltC
+
 12/11/2026
 -- ACBrCTe.XmlWriter --
 [*] ACBR-10208 - Alteração visando gerar a tag vTotDFe mesmo com a ausência do grupo
