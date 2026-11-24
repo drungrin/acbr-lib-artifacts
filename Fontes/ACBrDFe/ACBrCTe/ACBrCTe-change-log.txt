@@ -44,6 +44,12 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+23/11/2026
+-- ACBrCTeWebServices --
+[-] ACBR-10263 - O XML de um CT-e simplificado estava sendo montado como se fosse um CT-e
+    normal, correção feita na nomenclatura das tags.
+   Por: vinisted
+
 18/11/2026
 -- ACBrCTe.XmlWriter --
 [-] ACBR-10256 - Correção visando gerar corretamente o grupo IBSCBS para o CTe Simplificado
@@ -56,7 +62,7 @@ Símbolo : Significado
 12/11/2026
 -- ACBrCTe.XmlWriter --
 [*] ACBR-10208 - Alteração visando gerar a tag vTotDFe mesmo com a ausência do grupo
-    IBSCBS.
+    IBSCBS. Conforme consta nos Schemas a tag vTotDFe passa a ser opcional.
    Por: Paulo Alexandre Hostert
 -- ACBrCTe.IniWriter/ACBrCTe.XmlWriter --
 [*] Alterações visando gerar a tag tpRegimeIBSCBS se for CTe Simpl, CTe e CTe OS.
