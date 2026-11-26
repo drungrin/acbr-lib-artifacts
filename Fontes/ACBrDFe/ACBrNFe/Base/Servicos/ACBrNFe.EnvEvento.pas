@@ -472,7 +472,7 @@ begin
   Result.AppendChild(AddNode(tcInt, 'P20', 'cOrgaoAutor', 1, 2, 1, Evento[Idx].FInfEvento.detEvento.cOrgaoAutor));
   Result.AppendChild(AddNode(tcStr, 'P21', 'tpAutor', 1, 1, 1, TipoAutorToStr(Evento[Idx].FInfEvento.detEvento.tpAutor)));
   Result.AppendChild(AddNode(tcStr, 'P22', 'verAplic', 1, 20, 1, Evento[Idx].FInfEvento.detEvento.verAplic));
-  Result.AppendChild(AddNode(tcDat, 'P23', 'dPrevEntrega', 8, 8, 1, Evento[Idx].FInfEvento.detEvento.dPrevEntrega));
+  Result.AppendChild(AddNode(tcDat, 'P23', 'dPrevEntrega', 10, 10, 1, Evento[Idx].FInfEvento.detEvento.dPrevEntrega));
 end;
 
 function TEventoNFe.Gerar_Evento_CancComprEntrega(Idx: Integer): TACBrXmlNode;
@@ -748,7 +748,7 @@ begin
   Result.AppendChild(AddNode(tcInt, 'P20', 'cOrgaoAutor', 1, 2, 1, Evento[Idx].FInfEvento.detEvento.cOrgaoAutor));
   Result.AppendChild(AddNode(tcStr, 'P21', 'tpAutor', 1, 1, 1, TipoAutorToStr(Evento[Idx].FInfEvento.detEvento.tpAutor)));
   Result.AppendChild(AddNode(tcStr, 'P22', 'verAplic', 1, 20, 1, Evento[Idx].FInfEvento.detEvento.verAplic));
-  Result.AppendChild(AddNode(tcStr, 'P23', 'indAceitacao', 8, 8, 1, indAceitacaoToStr(Evento[Idx].FInfEvento.detEvento.indAceitacao)));
+  Result.AppendChild(AddNode(tcStr, 'P23', 'indAceitacao', 1, 1, 1, indAceitacaoToStr(Evento[Idx].FInfEvento.detEvento.indAceitacao)));
 end;
 
 function TEventoNFe.Gerar_Evento_PedProrrogacao(Idx: Integer): TACBrXmlNode;
@@ -1013,7 +1013,10 @@ begin
   Result.AppendChild(AddNode(tcInt, 'HP15', 'nSeqEvento', 1, 2, 1,
                                             Evento[Idx].FInfEvento.nSeqEvento));
 
-  Result.AppendChild(AddNode(tcStr, 'HP16', 'verEvento', 1, 4, 1, Versao));
+  if Versao <> EmptyStr then
+    Result.AppendChild(AddNode(tcStr, 'HP16', 'verEvento', 1, 4, 1, Versao))
+  else
+    Result.AppendChild(AddNode(tcStr, 'HP16', 'verEvento', 1, 4, 1, Evento[Idx].FInfEvento.versaoEvento));
 
 
   if DescricaoEventoPrecisaDeAcentos(Evento[Idx].InfEvento.tpEvento) then
@@ -2714,7 +2717,8 @@ begin
 
     Result[i].AppendChild(Gerar_gControleEstoque(Evento[Idx].InfEvento.detEvento.gConsumo[i].gControleEstoque));
 
-    Result[i].AppendChild(Gerar_DFeReferenciado(Evento[Idx].InfEvento.detEvento.gConsumo[i].DFeReferenciado));
+    if Trim(Evento[Idx].InfEvento.detEvento.gConsumo[i].DFeReferenciado.chaveAcesso) <> '' then
+      Result[i].AppendChild(Gerar_DFeReferenciado(Evento[Idx].InfEvento.detEvento.gConsumo[i].DFeReferenciado));
   end;
 
   if Evento[Idx].FInfEvento.detEvento.gConsumo.Count > 990 then
@@ -2950,8 +2954,8 @@ begin
   Result.AppendChild(AddNode(tcStr, 'P22', 'verAplic', 1, 20, 1,
                                     Evento[Idx].FInfEvento.detEvento.verAplic));
 
-  Result.AppendChild(AddNode(tcInt, 'P23', 'indAceitacao', 1, 2, 1,
-                                    Evento[Idx].FInfEvento.detEvento.indAceitacao));
+  Result.AppendChild(AddNode(tcStr, 'P23', 'indAceitacao', 1, 1, 1,
+                       indAceitacaoToStr(Evento[Idx].FInfEvento.detEvento.indAceitacao)));
 end;
 
 function TEventoNFe.Gerar_gConsumoComb(Idx: Integer): TACBrXmlNodeArray;

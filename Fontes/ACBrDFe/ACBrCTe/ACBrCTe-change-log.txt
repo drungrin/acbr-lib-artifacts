@@ -44,6 +44,29 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+25/11/2026
+-- ACBrCTe.IniReader/ACBrCTe.IniWriter --
+[*] ACBr-9224: Alteração visando tanto a leitura quanto a escrita de uma lista de
+    NF (Nota Fiscal comum), Outros (outros tipos de documentos) e DCe (Declaração de
+    Conteúdo Eletrônica) com mais de 999, sendo que conforme as regras de validações
+    essas listas podem conter até 2000 itens.
+   Por: Italo Giurizzato Junior
+
+24/11/2026
+-- ACBrCTe --
+[*] ACBr-10277: Conforme consta na NT 2026/004 versão 1.01 a contingência Offline também
+    exige o parâmetro "sign" na URL do QR-Code.
+   Por: Hélio Neto
+-- ACBrCTeDACTeRLRetrato --
+[*] ACBr-9871: Para o CTe Simplificado alterado a distribuição dos componentes de frete,
+    quando tem uma quantidade grande ficam todos na primeira coluna, agora é distribuído
+    nas 3 colunas.
+   Por: CS Time Com
+-- ACBrCTeWebServices --
+[*] ACBr-9807: Movido para dentro do IF a chamada a função GerarPathDistribuicao para
+    não criar as pastas quando o valor da propriedade Arquivos.Salvar for False.
+   Por: Alex Heinen
+
 23/11/2026
 -- ACBrCTeWebServices --
 [-] ACBR-10263 - O XML de um CT-e simplificado estava sendo montado como se fosse um CT-e
