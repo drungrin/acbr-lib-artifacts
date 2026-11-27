@@ -42,6 +42,28 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+26/11/2026
+-- ACBrNFSeXDANFSeRLPadraoNacional --
+[-] ACBr 10212 - Correção para que seja impresso corretamente o NIF de um tomador estrangeiro bem como
+    o código do endereçamento postal.
+  Por: Italo Giurizzato Junior
+-- ACBrNFSeXLerXml/SpeedGov.LerXml/Tecnos.LerXml --
+[*] ACBr 9563 - Trocado o ReadFloat por StringToFloatDef ao ler do INI um campo do tipo Float.
+  Por: Italo Giurizzato Junior
+-- ACBrNFSeXServicos --
+[*] ACBR-10296 - Correção no nome do município.
+   Por: ArecoDesenv
+-- SigISSWeb.GravarXml --
+[*] ACBR-10296 - Ao gerar a tag: cidade_destinatario_cbsibs verifica se o campo: xMunicipio foi
+    preenchido se sim usa se não otem através da função: ObterNomeMunicipioUF
+   Por: ArecoDesenv/Italo Giurizzato Junior
+-- ACBrNFSeXConversao --
+[*] ACBR-9232 - O tipo TNaoNIF agora tem o enumerado tnnNenhum para as situações onde a tag cNaoNIF é opcional.
+   Por: Italo Giurizzato Junior
+-- ISSFortaleza.GravarXml --
+[*] ACBR-9232 - Tem situações onde é necessário informar o CPF/CNPJ do Destinatário bem como o NaoNIF.
+   Por: Wesley Santos/ Italo Giurizzato Junior
+
 25/11/2026
 -- Equiplano.GravarXml --
 [-] Altera o parâmetro da cardinalidade do elemento dsComplemento para coincidir com o schema.
